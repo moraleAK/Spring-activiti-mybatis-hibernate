@@ -15,4 +15,4 @@ target
 .metadata
 */target/*
 */workspace.xml
-*/idea/*
+*/.idea/*
