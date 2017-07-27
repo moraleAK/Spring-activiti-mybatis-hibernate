@@ -9,10 +9,16 @@ public class Country {
     @Id
     @GeneratedValue
     private long id;
+    @Column(name = "country")
     private String country;
-    private String last_update;
-    @OneToMany
-    @JoinColumn(name = "city_id")
+    @Column(name = "last_update")
+    private String lastUpdate;
+    @OneToMany(fetch = FetchType.EAGER/*, cascade = CascadeType.PERSIST*/)
+    @JoinTable(
+            name = "country_city",
+            joinColumns = @JoinColumn(name = "country", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name="city", referencedColumnName = "id")
+    )
     private List<City> citys;
 
     public long getId() {
@@ -31,12 +37,12 @@ public class Country {
         this.country = country;
     }
 
-    public String getLast_update() {
-        return last_update;
+    public String getLastUpdate() {
+        return lastUpdate;
     }
 
-    public void setLast_update(String last_update) {
-        this.last_update = last_update;
+    public void setLastUpdate(String lastUpdate) {
+        this.lastUpdate = lastUpdate;
     }
 
     public List<City> getCitys() {

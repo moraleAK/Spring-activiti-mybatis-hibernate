@@ -11,8 +11,7 @@ public class City {
 	private long id;
 	private String city;
 	private String last_update;
-	@ManyToOne
-	@JoinColumn(name = "country_id")
+	@Transient
 	private Country country;
 
 	public long getId() {

@@ -13,7 +13,7 @@
     	insert into permission (permissionname) values(#{permissisonname})
     </insert>
     <delete id="deletepermission">
-    	delete from permission where pid=#{pid}
+    	delete from permission where id=#{id}
     </delete>
     <delete id="deleteRole_permission">
     	delete from role_permission where permissionid=#{permissionid}

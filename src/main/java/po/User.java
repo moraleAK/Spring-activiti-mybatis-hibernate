@@ -14,7 +14,11 @@ public class User {
 	String tel;
 	int age;
 	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
-	@JoinColumn(name = "user_role_id")
+	@JoinTable(
+			name = "user_user_role",
+			joinColumns = @JoinColumn(name = "user", referencedColumnName = "id"),
+			inverseJoinColumns = @JoinColumn(name="user_role", referencedColumnName = "id")
+	)
 	List<User_role> user_roles;
 
 	public long getId() {

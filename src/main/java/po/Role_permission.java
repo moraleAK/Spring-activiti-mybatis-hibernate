@@ -3,16 +3,14 @@ package po;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "role_permission")
+@Table(name = "C")
 public class Role_permission {
     @Id
     @GeneratedValue
     private long id;
-    @ManyToOne
-    @JoinColumn(name = "role_id")
+    @Transient
     Role role;
-    @ManyToOne
-    @JoinColumn(name = "permission_id")
+    @Transient
     Permission permission;
 
     public long getId() {

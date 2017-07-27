@@ -8,13 +8,20 @@ import java.util.List;
 public class Role {
     @Id
     @GeneratedValue
-    private long id;
+    public long id;
+
     String rolename;
-    @OneToMany
+
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
     @JoinColumn(name = "user_role_id")
     List<User_role> user_roles;
-    @OneToMany
-    @JoinColumn(name = "role_permission_id")
+
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+    @JoinTable(
+            name = "role_role_permission",
+            joinColumns = @JoinColumn(name = "role", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name="role_permission", referencedColumnName = "id")
+    )
     List<Role_permission> role_permissions;
 
     public long getId() {

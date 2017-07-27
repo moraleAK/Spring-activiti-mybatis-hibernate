@@ -10,8 +10,12 @@ public class Permission {
     @GeneratedValue
     private long id;
     String permissionname;
-    @OneToMany
-    @JoinColumn(name = "role_permission_id")
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+    @JoinTable(
+            name = "permission_role_permission",
+            joinColumns = @JoinColumn(name = "permission", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name="role_permission", referencedColumnName = "id")
+    )
     List<Role_permission> rp;
 
     public long getId() {

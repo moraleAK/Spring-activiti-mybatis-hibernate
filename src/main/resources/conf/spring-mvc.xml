@@ -51,10 +51,10 @@
     <mvc:resources location="/img/" mapping="/img/**"/>
     <!--<mvc:resources location="/fonts/"  mapping="/fonts/**" /> -->
     <!-- 页面转向解析 -->
-    <!--<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <property name="prefix" value="/WEB-INF/content/" />
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/content/" />
         <property name="suffix" value=".jsp" />
-    </bean>	-->
+    </bean>
     <!-- 文件上传 -->
     <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
     </bean>

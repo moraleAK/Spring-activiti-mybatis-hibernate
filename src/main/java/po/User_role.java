@@ -8,11 +8,9 @@ public class User_role {
     @Id
     @GeneratedValue
     private long id;
-    @ManyToOne
-    @JoinColumn(name = "user_id")
+    @Transient
     User user;
-    @ManyToOne
-    @JoinColumn(name = "role_id")
+    @Transient
     Role role;
 
     public long getId() {
