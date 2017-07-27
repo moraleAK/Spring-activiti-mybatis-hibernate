@@ -29,22 +29,26 @@ public class SystemServiceImpl implements SystemService{
 	RoleMapper rolemapper;
 	@Autowired
 	PermissionMapper permissionmapper;
+
+
 	public List<User> getallusers() {
 		return usermapper.getusers();
 	}
+
 	public List<User> getpageusers(int pagenum, int pagesize) {
 		PageHelper.startPage(pagenum,pagesize);  
 		List<User> l=usermapper.getusers();
 		return l;
 	}
-	public User getUserByid(int id) {
+	public User getUserByid(long id) {
 		User u=usermapper.getUserByid(id);
 		return u;
 	}
 	public List<Role> getRoles() {
 		return rolemapper.getRoles();
 	}
-	public void deleteuser(int uid) {
+
+	public void deleteuser(long uid) {
 		usermapper.deleteuser(uid);
 		usermapper.deleteuserrole(uid);
 	}
@@ -61,14 +65,15 @@ public class SystemServiceImpl implements SystemService{
 	public void adduser(User user) {
 		usermapper.adduser(user);
 	}
-	public void updateuser(int uid,User user, String[] rolenames) {
+
+	public void updateuser(long uid,User user, String[] rolenames) {
 		if(rolenames==null){
-			user.setUid(uid);
+			user.setId(uid);
 			usermapper.updateuser(user);
 			usermapper.deleteuserrole(uid);
 		}
 		else{
-			user.setUid(uid);
+			user.setId(uid);
 			usermapper.updateuser(user);
 			usermapper.deleteuserrole(uid);
 			for(String rolename:rolenames){
@@ -102,18 +107,18 @@ public class SystemServiceImpl implements SystemService{
 			rolemapper.addRolePermission(rp);
 		}
 	}
-	public void deleterole(int rid) {
+	public void deleterole(long rid) {
 		rolemapper.deleterole(rid);
 		rolemapper.deleterole_permission(rid);
 		rolemapper.deleteuser_role(rid);
 	}
-	public Role getRolebyid(int rid) {
+	public Role getRolebyid(long rid) {
 		return rolemapper.getRolebyid(rid);
 	}
-	public void deleterolepermission(int rid) {
+	public void deleterolepermission(long rid) {
 		rolemapper.deleterole_permission(rid);
 	}
-	public void updaterole(int rid, String[] permissionnames) {
+	public void updaterole(long rid, String[] permissionnames) {
 		Role role=rolemapper.getRolebyid(rid);
 		for(String permissionname:permissionnames){
 			Permission p=permissionmapper.getPermissionByname(permissionname);
@@ -130,12 +135,12 @@ public class SystemServiceImpl implements SystemService{
 	public void addPermission(String permissionname) {
 		permissionmapper.addpermission(permissionname);
 	}
-	public void deletepermission(int pid) {
+
+	public void deletepermission(long pid) {
 		permissionmapper.deletepermission(pid);
 		permissionmapper.deleteRole_permission(pid);
 	}
-	public int getUidByusername(String username) {
-		
+	public long getUidByusername(String username) {
 		return usermapper.getUidByusername(username);
 	}
 	

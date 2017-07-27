@@ -167,7 +167,7 @@ public class PurchaseController {
 		grid.setRows(new ArrayList<PurchaseTask>());
 		//先做权限检查，对于没有采购经理角色的用户,直接返回空
 		String userid=(String) session.getAttribute("username");
-		int uid=systemservice.getUidByusername(userid);
+		long uid=systemservice.getUidByusername(userid);
 		User user=systemservice.getUserByid(uid);
 		List<User_role> userroles=user.getUser_roles();
 		if(userroles==null||userroles.size()==0)
@@ -316,7 +316,7 @@ public class PurchaseController {
 		grid.setRows(new ArrayList<PurchaseTask>());
 		//先做权限检查，对于没有财务管理员角色的用户,直接返回空
 		String userid=(String) session.getAttribute("username");
-		int uid=systemservice.getUidByusername(userid);
+		long uid=systemservice.getUidByusername(userid);
 		User user=systemservice.getUserByid(uid);
 		List<User_role> userroles=user.getUser_roles();
 		if(userroles==null||userroles.size()==0)
@@ -383,7 +383,7 @@ public class PurchaseController {
 		grid.setRows(new ArrayList<PurchaseTask>());
 		//先做权限检查，对于没有总经理角色的用户,直接返回空
 		String userid=(String) session.getAttribute("username");
-		int uid=systemservice.getUidByusername(userid);
+		long uid=systemservice.getUidByusername(userid);
 		User user=systemservice.getUserByid(uid);
 		List<User_role> userroles=user.getUser_roles();
 		if(userroles==null||userroles.size()==0)
@@ -448,7 +448,7 @@ public class PurchaseController {
 		grid.setRows(new ArrayList<PurchaseTask>());
 		//先做权限检查，对于没有出纳角色的用户,直接返回空
 		String userid=(String) session.getAttribute("username");
-		int uid=systemservice.getUidByusername(userid);
+		long uid=systemservice.getUidByusername(userid);
 		User user=systemservice.getUserByid(uid);
 		List<User_role> userroles=user.getUser_roles();
 		if(userroles==null||userroles.size()==0)

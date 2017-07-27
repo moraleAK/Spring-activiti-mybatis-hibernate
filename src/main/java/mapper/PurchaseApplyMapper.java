@@ -4,6 +4,6 @@ import po.PurchaseApply;
 
 public interface PurchaseApplyMapper {
 	void save(PurchaseApply apply);
-	PurchaseApply get(int id);
+	PurchaseApply get(long id);
 	void update(PurchaseApply apply);
 }

@@ -48,7 +48,7 @@ public class SystemController {
 		List<Userinfo> users=new ArrayList<Userinfo>();
 		for(User user:userlist){
 			Userinfo u=new Userinfo();
-			u.setId(user.getUid());
+			u.setId(user.getId());
 			u.setAge(user.getAge());
 			u.setPassword(user.getPassword());
 			u.setTel(user.getTel());

@@ -189,7 +189,7 @@ public class ActivitiController {
 		grid.setRows(new ArrayList<LeaveTask>());
 		//先做权限检查，对于没有部门领导审批权限的用户,直接返回空
 		String userid=(String) session.getAttribute("username");
-		int uid=systemservice.getUidByusername(userid);
+		long uid=systemservice.getUidByusername(userid);
 		User user=systemservice.getUserByid(uid);
 		List<User_role> userroles=user.getUser_roles();
 		if(userroles==null)
@@ -198,9 +198,9 @@ public class ActivitiController {
 		for(int k=0;k<userroles.size();k++){
 			User_role ur=userroles.get(k);
 			Role r=ur.getRole();
-			int roleid=r.getRid();
+			long roleid=r.getId();
 			Role role=systemservice.getRolebyid(roleid);
-			List<Role_permission> p=role.getRole_permission();
+			List<Role_permission> p=role.getRole_permissions();
 			for(int j=0;j<p.size();j++){
 				Role_permission rp=p.get(j);
 				Permission permission=rp.getPermission();
@@ -252,7 +252,7 @@ public class ActivitiController {
 		grid.setRows(new ArrayList<LeaveTask>());
 		//先做权限检查，对于没有人事权限的用户,直接返回空
 		String userid=(String) session.getAttribute("username");
-		int uid=systemservice.getUidByusername(userid);
+		long uid=systemservice.getUidByusername(userid);
 		User user=systemservice.getUserByid(uid);
 		List<User_role> userroles=user.getUser_roles();
 		if(userroles==null)
@@ -261,9 +261,9 @@ public class ActivitiController {
 		for(int k=0;k<userroles.size();k++){
 			User_role ur=userroles.get(k);
 			Role r=ur.getRole();
-			int roleid=r.getRid();
+			long roleid=r.getId();
 			Role role=systemservice.getRolebyid(roleid);
-			List<Role_permission> p=role.getRole_permission();
+			List<Role_permission> p=role.getRole_permissions();
 			for(int j=0;j<p.size();j++){
 				Role_permission rp=p.get(j);
 				Permission permission=rp.getPermission();

@@ -5,13 +5,13 @@ import java.util.Date;
 import org.activiti.engine.task.Task;
 
 public class PurchaseApply {
-	int id;
+	long id;
 	String itemlist;
 	float total;
 	Date applytime;
 	String applyer;
 	Task task;
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 	public void setId(int id) {

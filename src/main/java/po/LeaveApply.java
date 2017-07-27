@@ -5,7 +5,7 @@ import java.io.Serializable;
 import org.activiti.engine.task.Task;
 
 public class LeaveApply implements Serializable{
-	int id;
+	long id;
 	String process_instance_id;
 	String user_id;
 	String start_time;
@@ -16,7 +16,7 @@ public class LeaveApply implements Serializable{
 	String reality_start_time;
 	String reality_end_time;
 	Task task;
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 	public void setId(int id) {

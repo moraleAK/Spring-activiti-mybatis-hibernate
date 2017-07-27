@@ -3,7 +3,7 @@ package pagemodel;
 import java.util.Date;
 
 public class LeaveTask {
-	int id;
+	long id;
 	String process_instance_id;
 	String user_id;
 	String start_time;
@@ -18,10 +18,10 @@ public class LeaveTask {
 	String processinstanceid;
 	String processdefid;
 	Date taskcreatetime;
-	public int getId() {
+	public long getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 	public String getProcess_instance_id() {

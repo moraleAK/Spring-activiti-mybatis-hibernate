@@ -15,8 +15,8 @@ public interface RoleMapper {
 	List<Role> getRoleinfo();
 	void addRole(Role role);
 	void addRolePermission(Role_permission rp);
-	void deleterole(int rid);
-	void deleterole_permission(int roleid);
-	void deleteuser_role(int roleid);
-	Role getRolebyid(int rid);
+	void deleterole(long rid);
+	void deleterole_permission(long roleid);
+	void deleteuser_role(long roleid);
+	Role getRolebyid(long rid);
 }

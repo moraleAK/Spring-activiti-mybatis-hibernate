@@ -1,16 +1,16 @@
 package pagemodel;
 
 public class Userinfo {
-	int id;
+	long id;
 	String username;
 	String password;
 	String tel;
 	int age;
 	String rolelist;
-	public int getId() {
+	public long getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 	public String getUsername() {

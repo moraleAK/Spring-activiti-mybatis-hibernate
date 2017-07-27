@@ -3,7 +3,7 @@ package pagemodel;
 import java.util.Date;
 
 public class PurchaseTask {
-	int bussinesskey;
+	long bussinesskey;
 	String applyer;
 	String itemlist;
 	float total;
@@ -12,10 +12,10 @@ public class PurchaseTask {
 	String taskname;
 	String processinstanceid;
 	String processdefid;
-	public int getBussinesskey() {
+	public long getBussinesskey() {
 		return bussinesskey;
 	}
-	public void setBussinesskey(int bussinesskey) {
+	public void setBussinesskey(long bussinesskey) {
 		this.bussinesskey = bussinesskey;
 	}
 	public String getApplyer() {

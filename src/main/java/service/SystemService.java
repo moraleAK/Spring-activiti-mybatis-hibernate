@@ -11,17 +11,17 @@ public interface SystemService {
 
     List<User> getpageusers(int pagenum, int pagesize);
 
-    User getUserByid(int id);
+    User getUserByid(long id);
 
     List<Role> getRoles();
 
-    void deleteuser(int uid);
+    void deleteuser(long uid);
 
     void adduser(User user, String[] rolenames);
 
     void adduser(User user);//只添加用户，无角色添加
 
-    void updateuser(int uid, User user, String[] rolenames);
+    void updateuser(long uid, User user, String[] rolenames);
 
     List<Role> getpageRoleinfo(int pagenum, int pagesize);
 
@@ -31,19 +31,19 @@ public interface SystemService {
 
     void addrole(Role role, String[] permissionnames);
 
-    void adeleterole(int rid);
+    void deleterole(long rid);
 
-    Role getRolebyid(int rid);
+    Role getRolebyid(long rid);
 
-    void deleterolepermission(int rid);//删除rid的角色下的所有权利
+    void deleterolepermission(long rid);//删除rid的角色下的所有权利
 
-    void updaterole(int rid, String[] permissionnames);//把所有的权利permissionnames添加到rid的角色下
+    void updaterole(long rid, String[] permissionnames);//把所有的权利permissionnames添加到rid的角色下
 
     List<Permission> getPagePermisions(int pagenum, int pagesize);
 
     void addPermission(String permissionname);
 
-    void deletepermission(int pid);
+    void deletepermission(long pid);
 
-    int getUidByusername(String username);
+    long getUidByusername(String username);
 }
