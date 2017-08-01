@@ -14,9 +14,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import po.Permission;
 import po.Role;
-import po.Role_permission;
+import po.RolePermission;
 import po.User;
-import po.User_role;
+import po.UserRole;
 import service.SystemService;
 
 import com.github.pagehelper.PageHelper;
@@ -56,7 +56,7 @@ public class SystemServiceImpl implements SystemService{
 		usermapper.adduser(user);
 		for(String rolename:rolenames){
 			Role role=rolemapper.getRoleidbyName(rolename);
-			User_role ur=new User_role();
+			UserRole ur=new UserRole();
 			ur.setRole(role);
 			ur.setUser(user);
 			rolemapper.adduserrole(ur);
@@ -78,7 +78,7 @@ public class SystemServiceImpl implements SystemService{
 			usermapper.deleteuserrole(uid);
 			for(String rolename:rolenames){
 				Role role=rolemapper.getRoleidbyName(rolename);
-				User_role ur=new User_role();
+				UserRole ur=new UserRole();
 				ur.setRole(role);
 				ur.setUser(user);
 				rolemapper.adduserrole(ur);
@@ -101,7 +101,7 @@ public class SystemServiceImpl implements SystemService{
 		rolemapper.addRole(role);
 		for(String permissionname:permissionnames){
 			Permission p=permissionmapper.getPermissionByname(permissionname);
-			Role_permission rp=new Role_permission();
+			RolePermission rp=new RolePermission();
 			rp.setRole(role);
 			rp.setPermission(p);
 			rolemapper.addRolePermission(rp);
@@ -122,7 +122,7 @@ public class SystemServiceImpl implements SystemService{
 		Role role=rolemapper.getRolebyid(rid);
 		for(String permissionname:permissionnames){
 			Permission p=permissionmapper.getPermissionByname(permissionname);
-			Role_permission rp=new Role_permission();
+			RolePermission rp=new RolePermission();
 			rp.setRole(role);
 			rp.setPermission(p);
 			rolemapper.addRolePermission(rp);

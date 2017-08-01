@@ -34,8 +34,8 @@
 							        <thead>
 							            <tr>
 							               <th data-column-id="applyer" data-identifier="true" data-type="numeric">申请人</th>
-							                <th data-column-id="applytime" data-formatter="applytime">申请时间</th>
-							                <th data-column-id="itemlist">申请内容</th>
+							                <th data-column-id="applyTime" data-formatter="applyTime">申请时间</th>
+							                <th data-column-id="itemList">申请内容</th>
 							                <th data-column-id="total">总金额</th>
 							                <th data-column-id="taskid">任务ID</th>
 							                <th data-column-id="taskname">任务名称</th>
@@ -67,7 +67,7 @@
 						<form role="form" action="startleave" method="post">
 						<div class="form-group has-feedback">
 							<label class="control-label">物品清单</label> 
-							<textarea id="itemlist" rows="6" class="form-control" name="itemlist" readonly="readonly">
+							<textarea id="itemList" rows="6" class="form-control" name="itemList" readonly="readonly">
 							</textarea>
 						</div>
 						<div class="form-group has-feedback">
@@ -109,7 +109,7 @@
 		    },
 		    "commands": function(column, row)
 		    {
-		            return "<button class=\"btn btn-xs btn-default ajax-link command-run1\" data-itemlist="+row.itemlist+" data-total="+row.total+" data-row-id=\"" + row.taskid + "\">处理</button>";
+		            return "<button class=\"btn btn-xs btn-default ajax-link command-run1\" data-itemList="+row.itemList+" data-total="+row.total+" data-row-id=\"" + row.taskid + "\">处理</button>";
 		    }
 	    	}
 	    
@@ -119,10 +119,10 @@
 	    	    {
 	    	    	var taskid=$(this).data("row-id");
 	    	    	var total=$(this).data("total");
-	    	    	var itemlist=$(this).data("itemlist");
+	    	    	var itemList=$(this).data("itemList");
 	    	    	var taskid=$(this).data("row-id");
 	    	    	$("#total").val(total);
-	    	    	$("#itemlist").val(itemlist);
+	    	    	$("#itemList").val(itemList);
 	    	    	$("#dept").show();
 	    	    	$("#btn").click(function(){
 	    		    	$.post("task/managercomplete/"+taskid,$("form").serialize(),function(a){

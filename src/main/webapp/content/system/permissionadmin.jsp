@@ -34,7 +34,7 @@
 							        <thead>
 							            <tr>
 							                <th data-column-id="pid" data-identifier="true" data-type="numeric">权限id</th>
-							                <th data-column-id="permissionname">权限名</th>
+							                <th data-column-id="permissionName">权限名</th>
 							                <th data-formatter="commands">操作</th>
 							            </tr>
 							        </thead>
@@ -83,9 +83,9 @@
 	  $(document).ready(function(){
 	  	$("#addpermission").click(function(){
 	  		$("#permissioninfo").modal();
-	  		$("#permissionname").val("");
+	  		$("#permissionName").val("");
 	    	$("#btn").click(function(){
-	    		if($("#permissionname").val()=="")
+	    		if($("#permissionName").val()=="")
 	    		{
 	    			alert("权限名不得为空");
 	    			return false;
@@ -112,9 +112,9 @@
       <form class="form-horizontal" method="post">
       <div class="modal-body">
         	<div class="row form-group">
-			    <label for="permissionname" class="col-sm-1 control-label">权限名</label>
+			    <label for="permissionName" class="col-sm-1 control-label">权限名</label>
 			    <div class="col-sm-11">
-			      <input type="text" name="permissionname" class="form-control" id="permissionname">
+			      <input type="text" name="permissionName" class="form-control" id="permissionName">
 			    </div>
         	</div>
       </div>

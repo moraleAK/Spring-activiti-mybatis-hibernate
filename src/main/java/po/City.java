@@ -10,7 +10,8 @@ public class City {
 	@GeneratedValue
 	private long id;
 	private String city;
-	private String last_update;
+	@Column(name = "lastUpdate")
+	private String lastUpdate;
 	@Transient
 	private Country country;
 
@@ -30,12 +31,12 @@ public class City {
 		this.city = city;
 	}
 
-	public String getLast_update() {
-		return last_update;
+	public String getLastUpdate() {
+		return lastUpdate;
 	}
 
-	public void setLast_update(String last_update) {
-		this.last_update = last_update;
+	public void setLastUpdate(String lastUpdate) {
+		this.lastUpdate = lastUpdate;
 	}
 
 	public Country getCountry() {

@@ -34,7 +34,7 @@
 							        <thead>
 							            <tr>
 							                <th data-column-id="rid" data-identifier="true" data-type="numeric">角色id</th>
-							                <th data-column-id="rolename">角色名</th>
+							                <th data-column-id="roleName">角色名</th>
 							                <th data-formatter="rights" data-column-id="rolelist">拥有权限</th>
 							                <th data-formatter="commands">操作</th>
 							            </tr>
@@ -62,7 +62,7 @@
 		    	var len=row.role_permission.length;
 		    	var str="";
 		    	for(var t=0;t<len;t++)
-		    		str+=row.role_permission[t].permission.permissionname+',';
+		    		str+=row.role_permission[t].permission.permissionName+',';
 		    	str=str.substring(0,str.length-1);
 				return str;
 		    },
@@ -80,20 +80,20 @@
 	    	    	$("#roleinfo").modal();
 	    	    	var rid=$(this).data("row-id");
 	    	    	$.get("roleinfo/"+rid,function(data){
-	    	    		$("#rolename").val(data.rolename);
+	    	    		$("#roleName").val(data.roleName);
 	    	    		var role_permission=data.role_permission;
 	    	    		var roles=[];
 	    	    		for(var a=0;a<role_permission.length;a++){
-	    	    			var name=role_permission[a].permission.permissionname;
+	    	    			var name=role_permission[a].permission.permissionName;
 	    	    			roles.push(name);
 	    	    		}
 	    	    		$.get("permissionlist",function(a){
 	    	    			$("#roles").html("");
 	    	    			for(var m=0;m<a.length;m++){
-	    	    				if(roles.indexOf(a[m].permissionname)<0)
-	    	    				$("#roles").append("<div class=\"checkbox-inline\"><label><input name='permissionname[]' value="+a[m].permissionname+" type=\"checkbox\">"+a[m].permissionname+"<i class=\"fa fa-square-o\"></i></label></div>");
+	    	    				if(roles.indexOf(a[m].permissionName)<0)
+	    	    				$("#roles").append("<div class=\"checkbox-inline\"><label><input name='permissionName[]' value="+a[m].permissionName+" type=\"checkbox\">"+a[m].permissionName+"<i class=\"fa fa-square-o\"></i></label></div>");
 	    	    				else
-	    	    				$("#roles").append("<div class=\"checkbox-inline\"><label><input name='permissionname[]' value="+a[m].permissionname+" type=\"checkbox\" checked=\"checked\">"+a[m].permissionname+"<i class=\"fa fa-square-o\"></i></label></div>");
+	    	    				$("#roles").append("<div class=\"checkbox-inline\"><label><input name='permissionName[]' value="+a[m].permissionName+" type=\"checkbox\" checked=\"checked\">"+a[m].permissionName+"<i class=\"fa fa-square-o\"></i></label></div>");
 	    	    			}
 	    	    			roles=[];
 	    	    		});
@@ -139,16 +139,16 @@
 	  	$("#addrole").click(function(){
 	  		$("#roleinfo").modal();
 	  		$("form").attr("action","adduser");
-	  		$("#rolename").removeAttr("readonly");
-	  		$("#rolename").val("");
+	  		$("#roleName").removeAttr("readonly");
+	  		$("#roleName").val("");
 	  		$.get("permissionlist",function(a){
 	    	    	$("#roles").html("");
 	    	    	for(var m=0;m<a.length;m++){
-	    	    		$("#roles").append("<div class=\"checkbox-inline\"><label><input name='permissionname[]' value="+a[m].permissionname+" type=\"checkbox\">"+a[m].permissionname+"<i class=\"fa fa-square-o\"></i></label></div>");
+	    	    		$("#roles").append("<div class=\"checkbox-inline\"><label><input name='permissionName[]' value="+a[m].permissionName+" type=\"checkbox\">"+a[m].permissionName+"<i class=\"fa fa-square-o\"></i></label></div>");
 	    	    	}
 	    	});
 	    	$("#btn").click(function(){
-	    		if($("#rolename").val()=="")
+	    		if($("#roleName").val()=="")
 	    		{
 	    			alert("角色名不得为空");
 	    			return false;
@@ -186,9 +186,9 @@
       <form class="form-horizontal" method="post">
       <div class="modal-body">
         	<div class="row form-group">
-			    <label for="rolename" class="col-sm-1 control-label">角色名</label>
+			    <label for="roleName" class="col-sm-1 control-label">角色名</label>
 			    <div class="col-sm-11">
-			      <input type="text" name="rolename" class="form-control" id="rolename" readonly="readonly">
+			      <input type="text" name="roleName" class="form-control" id="roleName" readonly="readonly">
 			    </div>
         	</div>
         	<h4 class="page-header">拥有权限</h4>

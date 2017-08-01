@@ -38,15 +38,15 @@ public class LeaveServiceImpl implements LeaveService{
 	TaskService taskservice;
 	
 	public ProcessInstance startWorkflow(LeaveApply apply, String userid, Map<String, Object> variables) {
-		apply.setApply_time(new Date().toString());
-		apply.setUser_id(userid);
+		apply.setApplyTime(new Date().toString());
+		apply.setUserId(userid);
 		leavemapper.save(apply);
 		String businesskey=String.valueOf(apply.getId());//使用leaveapply表的主键作为businesskey,连接业务数据和流程数据
 		identityservice.setAuthenticatedUserId(userid);
 		ProcessInstance instance=runtimeservice.startProcessInstanceByKey("leave",businesskey,variables);
 		System.out.println(businesskey);
 		String instanceid=instance.getId();
-		apply.setProcess_instance_id(instanceid);
+		apply.setProcessInstanceId(instanceid);
 		leavemapper.update(apply);
 		return instance;
 	}
@@ -138,8 +138,8 @@ public class LeaveServiceImpl implements LeaveService{
 		ProcessInstance ins=runtimeservice.createProcessInstanceQuery().processInstanceId(instanceid).singleResult();
 		String businesskey=ins.getBusinessKey();
 		LeaveApply a=leavemapper.get(Integer.parseInt(businesskey));
-		a.setReality_start_time(realstart_time);
-		a.setReality_end_time(realend_time);
+		a.setRealityStartTime(realstart_time);
+		a.setRealityEndTime(realend_time);
 		leavemapper.update(a);
 		taskservice.complete(taskid);
 	}
@@ -150,9 +150,9 @@ public class LeaveServiceImpl implements LeaveService{
 		ProcessInstance ins=runtimeservice.createProcessInstanceQuery().processInstanceId(instanceid).singleResult();
 		String businesskey=ins.getBusinessKey();
 		LeaveApply a=leavemapper.get(Integer.parseInt(businesskey));
-		a.setLeave_type(leave.getLeave_type());
-		a.setStart_time(leave.getStart_time());
-		a.setEnd_time(leave.getEnd_time());
+		a.setLeaveType(leave.getLeaveType());
+		a.setStartTime(leave.getStartTime());
+		a.setEndTime(leave.getEndTime());
 		a.setReason(leave.getReason());
 		Map<String,Object> variables=new HashMap<String,Object>();
 		variables.put("reapply", reapply);

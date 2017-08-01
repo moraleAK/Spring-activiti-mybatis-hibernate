@@ -31,7 +31,7 @@
 				<div class="box-content">
 					<form role="form" action="startleave" method="post">
 						<div class="form-group">
-							<label>请假类型</label> <select name="leave_type"
+							<label>请假类型</label> <select name="leaveType"
 								class="form-control">
 								<option value="事假">事假</option>
 								<option value="病假">病假</option>
@@ -42,10 +42,10 @@
 						</div>
 						<div class="form-group has-feedback">
 							<label class="control-label">开始时间</label> 
-							<input id="start" class="form-control" name="start_time" placeholder="开始时间"><span class="fa fa-calendar txt-danger form-control-feedback"></span>
+							<input id="start" class="form-control" name="startTime" placeholder="开始时间"><span class="fa fa-calendar txt-danger form-control-feedback"></span>
 						</div>
 						<div class="form-group has-feedback">
-							<label>结束时间</label> <input id="end" class="form-control" name="end_time"
+							<label>结束时间</label> <input id="end" class="form-control" name="endTime"
 								placeholder="结束时间"><span class="fa fa-calendar txt-danger form-control-feedback"></span>
 						</div>
 						<div class="form-group">

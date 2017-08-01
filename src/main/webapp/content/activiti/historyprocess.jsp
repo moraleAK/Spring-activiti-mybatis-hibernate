@@ -33,10 +33,10 @@
 							        <thead>
 							            <tr>
 							                <th data-column-id="businessKey">业务号</th>
-							                <th data-formatter="process_instance_id" data-column-id="process_instance_id">流程实例ID</th>
-							                <th data-formatter="user_id" data-column-id="user_id">申请人</th>
-							                <th data-formatter="leave_type" data-column-id="leave_type">请假类型</th>
-							                <th data-formatter="apply_time" data-column-id="apply_time">申请时间</th>
+							                <th data-formatter="processInstanceId" data-column-id="processInstanceId">流程实例ID</th>
+							                <th data-formatter="userId" data-column-id="userId">申请人</th>
+							                <th data-formatter="leaveType" data-column-id="leaveType">请假类型</th>
+							                <th data-formatter="applyTime" data-column-id="applyTime">申请时间</th>
 							                <th data-formatter="commands">查看详情</th>
 							            </tr>
 							        </thead>
@@ -59,21 +59,21 @@
 		    ajax:true,
 		    url:"getfinishprocess",
 		    formatters: {
-		    "process_instance_id": function(column, row){
-		    	return row.leaveapply.process_instance_id;
+		    "processInstanceId": function(column, row){
+		    	return row.leaveapply.processInstanceId;
 		    },
-		    "user_id":function(column, row){
-		    	return row.leaveapply.user_id;
+		    "userId":function(column, row){
+		    	return row.leaveapply.userId;
 		    },
-		    "leave_type":function(column, row){
-		    	return row.leaveapply.leave_type;
+		    "leaveType":function(column, row){
+		    	return row.leaveapply.leaveType;
 		    },
-		    "apply_time":function(column, row){
-		    	return row.leaveapply.apply_time;
+		    "applyTime":function(column, row){
+		    	return row.leaveapply.applyTime;
 		    },
 		    "commands": function(column, row)
 		    {
-		            return "<button class=\"btn btn-xs btn-default ajax-link command-run1\" data-row-id=\"" + row.leaveapply.process_instance_id + "\">查看详情</button>";
+		            return "<button class=\"btn btn-xs btn-default ajax-link command-run1\" data-row-id=\"" + row.leaveapply.processInstanceId + "\">查看详情</button>";
 		    }
 	    	}
 	    
@@ -82,9 +82,9 @@
 	    	    grid.find(".command-run1").on("click", function(e)
 	    	    {
 	    	    	$("#processinfo").modal();
-	    	    	var process_instance_id=$(this).data("row-id");
+	    	    	var processInstanceId=$(this).data("row-id");
 	    	    	$("#activity").html("<tr><th>活动名称</th><th>活动类型</th><th>办理人</th><th>活动开始时间</th><th>活动结束时间</th></tr>");
-	    	    	$.post("processinfo",{"instanceid":process_instance_id},function(data){
+	    	    	$.post("processinfo",{"instanceid":processInstanceId},function(data){
 	    	    		for(var a=0;a<data.length;a++)
 	    	    			$("#activity").append("<tr><td>"+data[a].activityName+"</td><td>"+data[a].activityType+"</td><td>"+data[a].assignee+"</td><td>"+getLocalTime(data[a].startTime)+"</td><td>"+getLocalTime(data[a].endTime)+"</td></tr>");
 	    	    	});

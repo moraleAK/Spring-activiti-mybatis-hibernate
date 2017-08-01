@@ -1,6 +1,7 @@
 package po;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -10,11 +11,12 @@ public class Role {
     @GeneratedValue
     public long id;
 
-    String rolename;
+    @Column(name = "role_name")
+    String roleName;
 
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
     @JoinColumn(name = "user_role_id")
-    List<User_role> user_roles;
+    List<UserRole> userRoles = new ArrayList<UserRole>();
 
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
     @JoinTable(
@@ -22,7 +24,7 @@ public class Role {
             joinColumns = @JoinColumn(name = "role", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name="role_permission", referencedColumnName = "id")
     )
-    List<Role_permission> role_permissions;
+    List<RolePermission> rolePermissions = new ArrayList<RolePermission>();
 
     public long getId() {
         return id;
@@ -32,27 +34,27 @@ public class Role {
         this.id = id;
     }
 
-    public String getRolename() {
-        return rolename;
+    public String getRoleName() {
+        return roleName;
     }
 
-    public void setRolename(String rolename) {
-        this.rolename = rolename;
+    public void setRoleName(String roleName) {
+        this.roleName = roleName;
     }
 
-    public List<User_role> getUser_roles() {
-        return user_roles;
+    public List<UserRole> getUserRoles() {
+        return userRoles;
     }
 
-    public void setUser_roles(List<User_role> user_roles) {
-        this.user_roles = user_roles;
+    public void setUserRoles(List<UserRole> userRoles) {
+        this.userRoles = userRoles;
     }
 
-    public List<Role_permission> getRole_permissions() {
-        return role_permissions;
+    public List<RolePermission> getRolePermissions() {
+        return rolePermissions;
     }
 
-    public void setRole_permissions(List<Role_permission> role_permissions) {
-        this.role_permissions = role_permissions;
+    public void setRolePermissions(List<RolePermission> rolePermissions) {
+        this.rolePermissions = rolePermissions;
     }
 }

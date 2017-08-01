@@ -12,15 +12,24 @@ public class LeaveApply implements Serializable {
     @Id
     @GeneratedValue
     long id;
-    String process_instance_id;
-    String user_id;
-    String start_time;
-    String end_time;
-    String leave_type;
+    @Column(name = "processInstanceId")
+    String processInstanceId;
+    @Column(name = "user_id")
+    String userId;
+    @Column(name = "startTime")
+    String startTime;
+    @Column(name = "endTime")
+    String endTime;
+    @Column(name = "leaveType")
+    String leaveType;
+    @Column(name = "reason")
     String reason;
-    String apply_time;
-    String reality_start_time;
-    String reality_end_time;
+    @Column(name = "applyTime")
+    String applyTime;
+    @Column(name = "realityStartTime")
+    String realityStartTime;
+    @Column(name = "realityEndTime")
+    String realityEndTime;
     @Transient
     Task task;
 
@@ -32,44 +41,44 @@ public class LeaveApply implements Serializable {
         this.id = id;
     }
 
-    public String getProcess_instance_id() {
-        return process_instance_id;
+    public String getProcessInstanceId() {
+        return processInstanceId;
     }
 
-    public void setProcess_instance_id(String process_instance_id) {
-        this.process_instance_id = process_instance_id;
+    public void setProcessInstanceId(String processInstanceId) {
+        this.processInstanceId = processInstanceId;
     }
 
-    public String getUser_id() {
-        return user_id;
+    public String getUserId() {
+        return userId;
     }
 
-    public void setUser_id(String user_id) {
-        this.user_id = user_id;
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
-    public String getStart_time() {
-        return start_time;
+    public String getStartTime() {
+        return startTime;
     }
 
-    public void setStart_time(String start_time) {
-        this.start_time = start_time;
+    public void setStartTime(String startTime) {
+        this.startTime = startTime;
     }
 
-    public String getEnd_time() {
-        return end_time;
+    public String getEndTime() {
+        return endTime;
     }
 
-    public void setEnd_time(String end_time) {
-        this.end_time = end_time;
+    public void setEndTime(String endTime) {
+        this.endTime = endTime;
     }
 
-    public String getLeave_type() {
-        return leave_type;
+    public String getLeaveType() {
+        return leaveType;
     }
 
-    public void setLeave_type(String leave_type) {
-        this.leave_type = leave_type;
+    public void setLeaveType(String leaveType) {
+        this.leaveType = leaveType;
     }
 
     public String getReason() {
@@ -80,28 +89,28 @@ public class LeaveApply implements Serializable {
         this.reason = reason;
     }
 
-    public String getApply_time() {
-        return apply_time;
+    public String getApplyTime() {
+        return applyTime;
     }
 
-    public void setApply_time(String apply_time) {
-        this.apply_time = apply_time;
+    public void setApplyTime(String applyTime) {
+        this.applyTime = applyTime;
     }
 
-    public String getReality_start_time() {
-        return reality_start_time;
+    public String getRealityStartTime() {
+        return realityStartTime;
     }
 
-    public void setReality_start_time(String reality_start_time) {
-        this.reality_start_time = reality_start_time;
+    public void setRealityStartTime(String realityStartTime) {
+        this.realityStartTime = realityStartTime;
     }
 
-    public String getReality_end_time() {
-        return reality_end_time;
+    public String getRealityEndTime() {
+        return realityEndTime;
     }
 
-    public void setReality_end_time(String reality_end_time) {
-        this.reality_end_time = reality_end_time;
+    public void setRealityEndTime(String realityEndTime) {
+        this.realityEndTime = realityEndTime;
     }
 
     public Task getTask() {

@@ -1,6 +1,7 @@
 package po;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -16,10 +17,10 @@ public class User {
 	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
 	@JoinTable(
 			name = "user_user_role",
-			joinColumns = @JoinColumn(name = "user", referencedColumnName = "id"),
-			inverseJoinColumns = @JoinColumn(name="user_role", referencedColumnName = "id")
+			joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
+			inverseJoinColumns = @JoinColumn(name="user_role_id", referencedColumnName = "id")
 	)
-	List<User_role> user_roles;
+	List<UserRole> userRoles = new ArrayList<UserRole>();
 
 	public long getId() {
 		return id;
@@ -61,19 +62,19 @@ public class User {
 		this.age = age;
 	}
 
-	public List<User_role> getUser_roles() {
-		return user_roles;
+	public List<UserRole> getUserRoles() {
+		return userRoles;
 	}
 
-	public void setUser_roles(List<User_role> user_roles) {
-		this.user_roles = user_roles;
+	public void setUserRoles(List<UserRole> userRoles) {
+		this.userRoles = userRoles;
 	}
 
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", username=" + username + ", password="
-				+ password + ", tel=" + tel + ", age=" + age + ", user_roles="
-				+ user_roles + "]";
+				+ password + ", tel=" + tel + ", age=" + age + ", userRoles="
+				+ userRoles + "]";
 	}
 	
 	

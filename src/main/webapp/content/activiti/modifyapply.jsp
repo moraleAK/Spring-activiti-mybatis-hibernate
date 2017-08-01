@@ -33,14 +33,14 @@
                                 <table id="grid-data" class="table table-condensed table-hover table-striped">
 							        <thead>
 							            <tr>
-							                <th data-column-id="user_id" data-identifier="true" data-type="numeric">申请人</th>
-							                <th data-column-id="leave_type">类型</th>
-							                <th data-column-id="start_time">请假开始时间</th>
-							                <th data-column-id="end_time">请假结束时间</th>
+							                <th data-column-id="userId" data-identifier="true" data-type="numeric">申请人</th>
+							                <th data-column-id="leaveType">类型</th>
+							                <th data-column-id="startTime">请假开始时间</th>
+							                <th data-column-id="endTime">请假结束时间</th>
 							                <th data-column-id="reason">请假原因</th>
 							                <th data-column-id="taskid">任务ID</th>
 							                <th data-column-id="taskname">任务名称</th>
-							                <th data-column-id="process_instance_id" >流程实例ID</th>
+							                <th data-column-id="processInstanceId" >流程实例ID</th>
 							                <th data-formatter="taskcreatetime" data-column-id="taskcreatetime">任务创建时间</th>
 							                <th data-formatter="commands">操作</th>
 							            </tr>
@@ -73,19 +73,19 @@
 						              </div>
 						             <div class="form-group">
 						                <label>申请时间</label>
-						                <input class="form-control" id="applytime" readonly="readonly">
+						                <input class="form-control" id="applyTime" readonly="readonly">
 						             </div>
                                 	<div class="form-group">
 						                <label>开始时间</label>
-						                <input class="form-control" id="startime" name="start_time">
+						                <input class="form-control" id="startime" name="startTime">
 						             </div>
 						             <div class="form-group">
 						                <label>结束时间</label>
-						                <input class="form-control" id="endtime" name="end_time">
+						                <input class="form-control" id="endtime" name="endTime">
 						             </div>
 						             <div class="form-group">
 						                <label>请假类型</label>
-						                <select name="leave_type" class="form-control">
+						                <select name="leaveType" class="form-control">
 						                  <option value="事假">事假</option>
 						                  <option value="病假">病假</option>
 						                  <option value="年假">年假</option>
@@ -147,11 +147,11 @@
 	    	    	var taskid=$(this).data("row-id");
 	    	    	$.post("dealtask",{"taskid":taskid},function(data){
 	    	    		$("#reason").val(data.reason);
-	    	    		$("#type").val(data.leave_type);
-	    	    		$("#userid").val(data.user_id);
-	    	    		$("#startime").val(data.start_time);
-	    	    		$("#endtime").val(data.end_time);
-	    	    		$("#applytime").val(data.apply_time);
+	    	    		$("#type").val(data.leaveType);
+	    	    		$("#userid").val(data.userId);
+	    	    		$("#startime").val(data.startTime);
+	    	    		$("#endtime").val(data.endTime);
+	    	    		$("#applyTime").val(data.applyTime);
 	    	    		$("form").attr("action","task/updatecomplete/"+taskid);
 	    	    	});
 	    	    	$("#dept").show();

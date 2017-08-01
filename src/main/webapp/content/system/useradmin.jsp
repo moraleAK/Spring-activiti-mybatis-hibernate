@@ -75,19 +75,19 @@
 	    	    		$("#username").val(data.username);
 	    	    		$("#tel").val(data.tel);
 	    	    		$("#age").val(data.age);
-	    	    		var user_role=data.user_roles;
+	    	    		var user_role=data.userRoles;
 	    	    		var roles=[];
 	    	    		for(var a=0;a<user_role.length;a++){
-	    	    			var role=user_role[a].role.rolename;
+	    	    			var role=user_role[a].role.roleName;
 	    	    			roles.push(role);
 	    	    		}
 	    	    		$.get("rolelist",function(a){
 	    	    			$("#roles").html("");
 	    	    			for(var m=0;m<a.length;m++){
-	    	    				if(roles.indexOf(a[m].rolename)<0)
-	    	    				$("#roles").append("<div class=\"checkbox-inline\"><label><input name='rolename[]' value="+a[m].rolename+" type=\"checkbox\">"+a[m].rolename+"<i class=\"fa fa-square-o\"></i></label></div>");
+	    	    				if(roles.indexOf(a[m].roleName)<0)
+	    	    				$("#roles").append("<div class=\"checkbox-inline\"><label><input name='roleName[]' value="+a[m].roleName+" type=\"checkbox\">"+a[m].roleName+"<i class=\"fa fa-square-o\"></i></label></div>");
 	    	    				else
-	    	    				$("#roles").append("<div class=\"checkbox-inline\"><label><input name='rolename[]' value="+a[m].rolename+" type=\"checkbox\" checked=\"checked\">"+a[m].rolename+"<i class=\"fa fa-square-o\"></i></label></div>");
+	    	    				$("#roles").append("<div class=\"checkbox-inline\"><label><input name='roleName[]' value="+a[m].roleName+" type=\"checkbox\" checked=\"checked\">"+a[m].roleName+"<i class=\"fa fa-square-o\"></i></label></div>");
 	    	    			}
 	    	    			roles=[];
 	    	    		});
@@ -137,7 +137,7 @@
 	  		$.get("rolelist",function(a){
 	    	    	$("#roles").html("");
 	    	    	for(var m=0;m<a.length;m++){
-	    	    		$("#roles").append("<div class=\"checkbox-inline\"><label><input name='rolename[]' value="+a[m].rolename+" type=\"checkbox\">"+a[m].rolename+"<i class=\"fa fa-square-o\"></i></label></div>");
+	    	    		$("#roles").append("<div class=\"checkbox-inline\"><label><input name='roleName[]' value="+a[m].roleName+" type=\"checkbox\">"+a[m].roleName+"<i class=\"fa fa-square-o\"></i></label></div>");
 	    	    	}
 	    	});
 	    	$("#btn").click(function(){

@@ -34,7 +34,7 @@
 							            <tr>
 							                <th data-column-id="businessKey">业务号</th>
 							                <th data-formatter="applyer" data-column-id="applyer">申请人</th>
-							                <th data-formatter="itemlist" data-column-id="itemlist">采购内容</th>
+							                <th data-formatter="itemList" data-column-id="itemList">采购内容</th>
 							                <th data-formatter="total" data-column-id="total">总金额</th>
 							                <th data-formatter="commands">查看详情</th>
 							            </tr>
@@ -61,8 +61,8 @@
 		    "applyer":function(column, row){
 		    	return row.purchaseapply.applyer;
 		    },
-		    "itemlist":function(column, row){
-		    	return row.purchaseapply.itemlist;
+		    "itemList":function(column, row){
+		    	return row.purchaseapply.itemList;
 		    },
 		    "total":function(column, row){
 		    	return row.purchaseapply.total;

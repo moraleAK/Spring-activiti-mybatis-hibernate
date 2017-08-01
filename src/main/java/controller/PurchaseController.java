@@ -21,7 +21,6 @@ import org.activiti.engine.task.Task;
 import org.activiti.engine.task.TaskQuery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -29,15 +28,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import pagemodel.DataGrid;
 import pagemodel.HistoryProcess;
-import pagemodel.LeaveTask;
 import pagemodel.MSG;
 import pagemodel.PurchaseTask;
 import pagemodel.RunningProcess;
-import po.LeaveApply;
 import po.PurchaseApply;
 import po.Role;
 import po.User;
-import po.User_role;
+import po.UserRole;
 import service.PurchaseService;
 import service.SystemService;
 
@@ -106,9 +103,9 @@ public class PurchaseController {
 		variables.put("starter", userid);
 		PurchaseApply purchase=new PurchaseApply();
 		purchase.setApplyer(userid);
-		purchase.setItemlist(itemlist);
+		purchase.setItemList(itemlist);
 		purchase.setTotal(total);
-		purchase.setApplytime(new Date());
+		purchase.setApplyTime(new Date());
 		ProcessInstance ins=purchaseservice.startWorkflow(purchase, userid, variables);
 		System.out.println("流程id"+ins.getId()+"已启动");
 		return JSON.toJSONString("sucess");
@@ -169,14 +166,14 @@ public class PurchaseController {
 		String userid=(String) session.getAttribute("username");
 		long uid=systemservice.getUidByusername(userid);
 		User user=systemservice.getUserByid(uid);
-		List<User_role> userroles=user.getUser_roles();
+		List<UserRole> userroles=user.getUserRoles();
 		if(userroles==null||userroles.size()==0)
 			return grid;
 		boolean flag=false;
-		for(User_role ur:userroles)
+		for(UserRole ur:userroles)
 		{
 			Role r=ur.getRole();
-			if(r.getRolename().equals("采购经理")){
+			if(r.getRoleName().equals("采购经理")){
 				flag=true;
 			}
 		}
@@ -192,9 +189,9 @@ public class PurchaseController {
 				String businesskey=ins.getBusinessKey();
 				PurchaseApply a=purchaseservice.getPurchase(Integer.parseInt(businesskey));
 				vo.setApplyer(a.getApplyer());
-				vo.setApplytime(a.getApplytime());
+				vo.setApplytime(a.getApplyTime());
 				vo.setBussinesskey(a.getId());
-				vo.setItemlist(a.getItemlist());
+				vo.setItemlist(a.getItemList());
 				vo.setProcessdefid(task.getProcessDefinitionId());
 				vo.setProcessinstanceid(task.getProcessInstanceId());
 				vo.setTaskid(task.getId());
@@ -238,9 +235,9 @@ public class PurchaseController {
 			String businesskey=ins.getBusinessKey();
 			PurchaseApply a=purchaseservice.getPurchase(Integer.parseInt(businesskey));
 			vo.setApplyer(a.getApplyer());
-			vo.setApplytime(a.getApplytime());
+			vo.setApplytime(a.getApplyTime());
 			vo.setBussinesskey(a.getId());
-			vo.setItemlist(a.getItemlist());
+			vo.setItemlist(a.getItemList());
 			vo.setProcessdefid(task.getProcessDefinitionId());
 			vo.setProcessinstanceid(task.getProcessInstanceId());
 			vo.setTaskid(task.getId());
@@ -269,7 +266,7 @@ public class PurchaseController {
 			ProcessInstance ins=runservice.createProcessInstanceQuery().processInstanceId(instanceid).singleResult();
 			String businesskey=ins.getBusinessKey();
 			PurchaseApply p=purchaseservice.getPurchase(Integer.parseInt(businesskey));
-			p.setItemlist(itemlist);
+			p.setItemList(itemlist);
 			p.setTotal(Float.parseFloat(total));
 			purchaseservice.updatePurchase(p);
 		}
@@ -318,14 +315,14 @@ public class PurchaseController {
 		String userid=(String) session.getAttribute("username");
 		long uid=systemservice.getUidByusername(userid);
 		User user=systemservice.getUserByid(uid);
-		List<User_role> userroles=user.getUser_roles();
+		List<UserRole> userroles=user.getUserRoles();
 		if(userroles==null||userroles.size()==0)
 			return grid;
 		boolean flag=false;
-		for(User_role ur:userroles)
+		for(UserRole ur:userroles)
 		{
 			Role r=ur.getRole();
-			if(r.getRolename().equals("财务管理员")){
+			if(r.getRoleName().equals("财务管理员")){
 				flag=true;
 			}
 		}
@@ -341,9 +338,9 @@ public class PurchaseController {
 				String businesskey=ins.getBusinessKey();
 				PurchaseApply a=purchaseservice.getPurchase(Integer.parseInt(businesskey));
 				vo.setApplyer(a.getApplyer());
-				vo.setApplytime(a.getApplytime());
+				vo.setApplytime(a.getApplyTime());
 				vo.setBussinesskey(a.getId());
-				vo.setItemlist(a.getItemlist());
+				vo.setItemlist(a.getItemList());
 				vo.setProcessdefid(task.getProcessDefinitionId());
 				vo.setProcessinstanceid(task.getProcessInstanceId());
 				vo.setTaskid(task.getId());
@@ -385,14 +382,14 @@ public class PurchaseController {
 		String userid=(String) session.getAttribute("username");
 		long uid=systemservice.getUidByusername(userid);
 		User user=systemservice.getUserByid(uid);
-		List<User_role> userroles=user.getUser_roles();
+		List<UserRole> userroles=user.getUserRoles();
 		if(userroles==null||userroles.size()==0)
 			return grid;
 		boolean flag=false;
-		for(User_role ur:userroles)
+		for(UserRole ur:userroles)
 		{
 			Role r=ur.getRole();
-			if(r.getRolename().equals("总经理")){
+			if(r.getRoleName().equals("总经理")){
 				flag=true;
 			}
 		}
@@ -408,9 +405,9 @@ public class PurchaseController {
 				String businesskey=ins.getBusinessKey();
 				PurchaseApply a=purchaseservice.getPurchase(Integer.parseInt(businesskey));
 				vo.setApplyer(a.getApplyer());
-				vo.setApplytime(a.getApplytime());
+				vo.setApplytime(a.getApplyTime());
 				vo.setBussinesskey(a.getId());
-				vo.setItemlist(a.getItemlist());
+				vo.setItemlist(a.getItemList());
 				vo.setProcessdefid(task.getProcessDefinitionId());
 				vo.setProcessinstanceid(task.getProcessInstanceId());
 				vo.setTaskid(task.getId());
@@ -450,14 +447,14 @@ public class PurchaseController {
 		String userid=(String) session.getAttribute("username");
 		long uid=systemservice.getUidByusername(userid);
 		User user=systemservice.getUserByid(uid);
-		List<User_role> userroles=user.getUser_roles();
+		List<UserRole> userroles=user.getUserRoles();
 		if(userroles==null||userroles.size()==0)
 			return grid;
 		boolean flag=false;
-		for(User_role ur:userroles)
+		for(UserRole ur:userroles)
 		{
 			Role r=ur.getRole();
-			if(r.getRolename().equals("出纳员")){
+			if(r.getRoleName().equals("出纳员")){
 				flag=true;
 			}
 		}
@@ -473,9 +470,9 @@ public class PurchaseController {
 				String businesskey=ins.getBusinessKey();
 				PurchaseApply a=purchaseservice.getPurchase(Integer.parseInt(businesskey));
 				vo.setApplyer(a.getApplyer());
-				vo.setApplytime(a.getApplytime());
+				vo.setApplytime(a.getApplyTime());
 				vo.setBussinesskey(a.getId());
-				vo.setItemlist(a.getItemlist());
+				vo.setItemlist(a.getItemList());
 				vo.setProcessdefid(task.getProcessDefinitionId());
 				vo.setProcessinstanceid(task.getProcessInstanceId());
 				vo.setTaskid(task.getId());
@@ -517,9 +514,9 @@ public class PurchaseController {
 				String businesskey=ins.getBusinessKey();
 				PurchaseApply a=purchaseservice.getPurchase(Integer.parseInt(businesskey));
 				vo.setApplyer(a.getApplyer());
-				vo.setApplytime(a.getApplytime());
+				vo.setApplytime(a.getApplyTime());
 				vo.setBussinesskey(a.getId());
-				vo.setItemlist(a.getItemlist());
+				vo.setItemlist(a.getItemList());
 				vo.setProcessdefid(task.getProcessDefinitionId());
 				vo.setProcessinstanceid(task.getProcessInstanceId());
 				vo.setTaskid(task.getId());

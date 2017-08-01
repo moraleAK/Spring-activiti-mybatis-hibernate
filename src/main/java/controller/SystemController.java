@@ -17,7 +17,7 @@ import pagemodel.Userinfo;
 import po.Permission;
 import po.Role;
 import po.User;
-import po.User_role;
+import po.UserRole;
 import service.SystemService;
 
 @Controller
@@ -54,10 +54,10 @@ public class SystemController {
 			u.setTel(user.getTel());
 			u.setUsername(user.getUsername());
 			String rolename="";
-			List<User_role> ur=user.getUser_roles();
+			List<UserRole> ur=user.getUserRoles();
 			if(ur!=null){
-				for(User_role userole:ur){
-					rolename=rolename+","+userole.getRole().getRolename();
+				for(UserRole userole:ur){
+					rolename=rolename+","+userole.getRole().getRoleName();
 				}
 				if(rolename.length()>0)
 				rolename=rolename.substring(1,rolename.length());
@@ -130,7 +130,7 @@ public class SystemController {
 	@RequestMapping(value="addrole",method=RequestMethod.POST)
 	String addrole(@RequestParam("rolename") String rolename,@RequestParam(value="permissionname[]")String[] permissionname){
 		Role r=new Role();
-		r.setRolename(rolename);
+		r.setRoleName(rolename);
 		systemservice.addrole(r, permissionname);
 		return "forward:/roleadmin";
 	}

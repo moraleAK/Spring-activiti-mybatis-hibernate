@@ -18,8 +18,8 @@ public class Login {
     @RequestMapping("/loginvalidate")
     public String loginvalidate(@RequestParam("username") String username, @RequestParam("pic") String pic, @RequestParam("password") String pwd, HttpSession httpSession) {
         String picode = (String) httpSession.getAttribute("rand");
-        /*if(!picode.equalsIgnoreCase(pic))
-			return "failcode";*/
+        if(!picode.equalsIgnoreCase(pic))
+			return "failcode";
         if (username == null)
             return "login";
         String realpwd = loginservice.getpwdbyname(username);

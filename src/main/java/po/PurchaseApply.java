@@ -12,9 +12,9 @@ public class PurchaseApply {
     @Id
     @GeneratedValue
     long id;
-    String itemlist;
+    String itemList;
     float total;
-    Date applytime;
+    Date applyTime;
     String applyer;
     @Transient
     Task task;
@@ -27,12 +27,12 @@ public class PurchaseApply {
         this.id = id;
     }
 
-    public String getItemlist() {
-        return itemlist;
+    public String getItemList() {
+        return itemList;
     }
 
-    public void setItemlist(String itemlist) {
-        this.itemlist = itemlist;
+    public void setItemList(String itemList) {
+        this.itemList = itemList;
     }
 
     public float getTotal() {
@@ -43,12 +43,12 @@ public class PurchaseApply {
         this.total = total;
     }
 
-    public Date getApplytime() {
-        return applytime;
+    public Date getApplyTime() {
+        return applyTime;
     }
 
-    public void setApplytime(Date applytime) {
-        this.applytime = applytime;
+    public void setApplyTime(Date applyTime) {
+        this.applyTime = applyTime;
     }
 
     public String getApplyer() {

@@ -24,15 +24,15 @@ DROP TABLE IF EXISTS `leaveapply`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `leaveapply` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `process_instance_id` varchar(45) DEFAULT NULL,
-  `user_id` varchar(20) DEFAULT NULL,
-  `start_time` varchar(45) DEFAULT NULL,
-  `end_time` varchar(45) DEFAULT NULL,
-  `leave_type` varchar(45) DEFAULT NULL,
+  `processInstanceId` varchar(45) DEFAULT NULL,
+  `userId` varchar(20) DEFAULT NULL,
+  `startTime` varchar(45) DEFAULT NULL,
+  `endTime` varchar(45) DEFAULT NULL,
+  `leaveType` varchar(45) DEFAULT NULL,
   `reason` varchar(400) DEFAULT NULL,
-  `apply_time` varchar(100) DEFAULT NULL,
-  `reality_start_time` varchar(45) DEFAULT NULL,
-  `reality_end_time` varchar(45) DEFAULT NULL,
+  `applyTime` varchar(100) DEFAULT NULL,
+  `realityStartTime` varchar(45) DEFAULT NULL,
+  `realityEndTime` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -55,9 +55,9 @@ DROP TABLE IF EXISTS `permission`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `permission` (
   `pid` int(11) NOT NULL AUTO_INCREMENT,
-  `permissionname` varchar(45) NOT NULL,
+  `permissionName` varchar(45) NOT NULL,
   PRIMARY KEY (`pid`),
-  UNIQUE KEY `permissionname_UNIQUE` (`permissionname`)
+  UNIQUE KEY `permissionname_UNIQUE` (`permissionName`)
 ) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -80,9 +80,9 @@ DROP TABLE IF EXISTS `purchase`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `purchase` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `itemlist` text NOT NULL,
+  `itemList` text NOT NULL,
   `total` float NOT NULL,
-  `applytime` varchar(45) DEFAULT NULL,
+  `applyTime` varchar(45) DEFAULT NULL,
   `applyer` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
@@ -106,9 +106,9 @@ DROP TABLE IF EXISTS `role`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `role` (
   `rid` int(11) NOT NULL AUTO_INCREMENT,
-  `rolename` varchar(45) NOT NULL,
+  `roleName` varchar(45) NOT NULL,
   PRIMARY KEY (`rid`),
-  UNIQUE KEY `rolename_UNIQUE` (`rolename`)
+  UNIQUE KEY `rolename_UNIQUE` (`roleName`)
 ) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 

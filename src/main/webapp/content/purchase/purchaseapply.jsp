@@ -32,7 +32,7 @@
 					<form role="form" action="startleave" method="post">
 						<div class="form-group has-feedback">
 							<label class="control-label">物品清单</label> 
-							<textarea id="itemlist" rows="6" class="form-control" name="itemlist">
+							<textarea id="itemList" rows="6" class="form-control" name="itemList">
 							</textarea>
 						</div>
 						<div class="form-group has-feedback">

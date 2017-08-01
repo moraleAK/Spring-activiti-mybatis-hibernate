@@ -3,15 +3,15 @@ package po;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "user_role")
-public class User_role {
+@Table(name = "role_permission")
+public class RolePermission {
     @Id
     @GeneratedValue
     private long id;
     @Transient
-    User user;
-    @Transient
     Role role;
+    @Transient
+    Permission permission;
 
     public long getId() {
         return id;
@@ -21,19 +21,19 @@ public class User_role {
         this.id = id;
     }
 
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
     public Role getRole() {
         return role;
     }
 
     public void setRole(Role role) {
         this.role = role;
+    }
+
+    public Permission getPermission() {
+        return permission;
+    }
+
+    public void setPermission(Permission permission) {
+        this.permission = permission;
     }
 }

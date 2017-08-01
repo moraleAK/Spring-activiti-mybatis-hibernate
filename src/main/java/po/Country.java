@@ -1,6 +1,7 @@
 package po;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -19,7 +20,7 @@ public class Country {
             joinColumns = @JoinColumn(name = "country", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name="city", referencedColumnName = "id")
     )
-    private List<City> citys;
+    private List<City> cities = new ArrayList<City>();
 
     public long getId() {
         return id;
@@ -45,11 +46,11 @@ public class Country {
         this.lastUpdate = lastUpdate;
     }
 
-    public List<City> getCitys() {
-        return citys;
+    public List<City> getCities() {
+        return cities;
     }
 
-    public void setCitys(List<City> citys) {
-        this.citys = citys;
+    public void setCities(List<City> cities) {
+        this.cities = cities;
     }
 }

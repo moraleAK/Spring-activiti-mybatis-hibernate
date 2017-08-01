@@ -2,7 +2,6 @@ package controller;
 
 import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -48,9 +47,9 @@ import pagemodel.RunningProcess;
 import po.LeaveApply;
 import po.Permission;
 import po.Role;
-import po.Role_permission;
+import po.RolePermission;
 import po.User;
-import po.User_role;
+import po.UserRole;
 import service.LeaveService;
 import service.SystemService;
 
@@ -191,20 +190,20 @@ public class ActivitiController {
 		String userid=(String) session.getAttribute("username");
 		long uid=systemservice.getUidByusername(userid);
 		User user=systemservice.getUserByid(uid);
-		List<User_role> userroles=user.getUser_roles();
+		List<UserRole> userroles=user.getUserRoles();
 		if(userroles==null)
 			return grid;
 		boolean flag=false;//默认没有权限
 		for(int k=0;k<userroles.size();k++){
-			User_role ur=userroles.get(k);
+			UserRole ur=userroles.get(k);
 			Role r=ur.getRole();
 			long roleid=r.getId();
 			Role role=systemservice.getRolebyid(roleid);
-			List<Role_permission> p=role.getRole_permissions();
+			List<RolePermission> p=role.getRolePermissions();
 			for(int j=0;j<p.size();j++){
-				Role_permission rp=p.get(j);
+				RolePermission rp=p.get(j);
 				Permission permission=rp.getPermission();
-				if(permission.getPermissionname().equals("部门领导审批"))
+				if(permission.getPermissionName().equals("部门领导审批"))
 					flag=true;
 				else
 					continue;
@@ -220,15 +219,15 @@ public class ActivitiController {
 				List<LeaveTask> tasks=new ArrayList<LeaveTask>();
 				for(LeaveApply apply:results){
 					LeaveTask task=new LeaveTask();
-					task.setApply_time(apply.getApply_time());
-					task.setUser_id(apply.getUser_id());
-					task.setEnd_time(apply.getEnd_time());
+					task.setApply_time(apply.getApplyTime());
+					task.setUser_id(apply.getUserId());
+					task.setEnd_time(apply.getEndTime());
 					task.setId(apply.getId());
-					task.setLeave_type(apply.getLeave_type());
-					task.setProcess_instance_id(apply.getProcess_instance_id());
+					task.setLeave_type(apply.getLeaveType());
+					task.setProcess_instance_id(apply.getProcessInstanceId());
 					task.setProcessdefid(apply.getTask().getProcessDefinitionId());
 					task.setReason(apply.getReason());
-					task.setStart_time(apply.getStart_time());
+					task.setStart_time(apply.getStartTime());
 					task.setTaskcreatetime(apply.getTask().getCreateTime());
 					task.setTaskid(apply.getTask().getId());
 					task.setTaskname(apply.getTask().getName());
@@ -254,20 +253,20 @@ public class ActivitiController {
 		String userid=(String) session.getAttribute("username");
 		long uid=systemservice.getUidByusername(userid);
 		User user=systemservice.getUserByid(uid);
-		List<User_role> userroles=user.getUser_roles();
+		List<UserRole> userroles=user.getUserRoles();
 		if(userroles==null)
 			return grid;
 		boolean flag=false;//默认没有权限
 		for(int k=0;k<userroles.size();k++){
-			User_role ur=userroles.get(k);
+			UserRole ur=userroles.get(k);
 			Role r=ur.getRole();
 			long roleid=r.getId();
 			Role role=systemservice.getRolebyid(roleid);
-			List<Role_permission> p=role.getRole_permissions();
+			List<RolePermission> p=role.getRolePermissions();
 			for(int j=0;j<p.size();j++){
-				Role_permission rp=p.get(j);
+				RolePermission rp=p.get(j);
 				Permission permission=rp.getPermission();
-				if(permission.getPermissionname().equals("人事审批"))
+				if(permission.getPermissionName().equals("人事审批"))
 					flag=true;
 				else
 					continue;
@@ -283,15 +282,15 @@ public class ActivitiController {
 		List<LeaveTask> tasks=new ArrayList<LeaveTask>();
 		for(LeaveApply apply:results){
 			LeaveTask task=new LeaveTask();
-			task.setApply_time(apply.getApply_time());
-			task.setUser_id(apply.getUser_id());
-			task.setEnd_time(apply.getEnd_time());
+			task.setApply_time(apply.getApplyTime());
+			task.setUser_id(apply.getUserId());
+			task.setEnd_time(apply.getEndTime());
 			task.setId(apply.getId());
-			task.setLeave_type(apply.getLeave_type());
-			task.setProcess_instance_id(apply.getProcess_instance_id());
+			task.setLeave_type(apply.getLeaveType());
+			task.setProcess_instance_id(apply.getProcessInstanceId());
 			task.setProcessdefid(apply.getTask().getProcessDefinitionId());
 			task.setReason(apply.getReason());
-			task.setStart_time(apply.getStart_time());
+			task.setStart_time(apply.getStartTime());
 			task.setTaskcreatetime(apply.getTask().getCreateTime());
 			task.setTaskid(apply.getTask().getId());
 			task.setTaskname(apply.getTask().getName());
@@ -315,15 +314,15 @@ public class ActivitiController {
 		List<LeaveTask> tasks=new ArrayList<LeaveTask>();
 		for(LeaveApply apply:results){
 			LeaveTask task=new LeaveTask();
-			task.setApply_time(apply.getApply_time());
-			task.setUser_id(apply.getUser_id());
-			task.setEnd_time(apply.getEnd_time());
+			task.setApply_time(apply.getApplyTime());
+			task.setUser_id(apply.getUserId());
+			task.setEnd_time(apply.getEndTime());
 			task.setId(apply.getId());
-			task.setLeave_type(apply.getLeave_type());
-			task.setProcess_instance_id(apply.getProcess_instance_id());
+			task.setLeave_type(apply.getLeaveType());
+			task.setProcess_instance_id(apply.getProcessInstanceId());
 			task.setProcessdefid(apply.getTask().getProcessDefinitionId());
 			task.setReason(apply.getReason());
-			task.setStart_time(apply.getStart_time());
+			task.setStart_time(apply.getStartTime());
 			task.setTaskcreatetime(apply.getTask().getCreateTime());
 			task.setTaskid(apply.getTask().getId());
 			task.setTaskname(apply.getTask().getName());
@@ -348,15 +347,15 @@ public class ActivitiController {
 		List<LeaveTask> tasks=new ArrayList<LeaveTask>();
 		for(LeaveApply apply:results){
 			LeaveTask task=new LeaveTask();
-			task.setApply_time(apply.getApply_time());
-			task.setUser_id(apply.getUser_id());
-			task.setEnd_time(apply.getEnd_time());
+			task.setApply_time(apply.getApplyTime());
+			task.setUser_id(apply.getUserId());
+			task.setEnd_time(apply.getEndTime());
 			task.setId(apply.getId());
-			task.setLeave_type(apply.getLeave_type());
-			task.setProcess_instance_id(apply.getProcess_instance_id());
+			task.setLeave_type(apply.getLeaveType());
+			task.setProcess_instance_id(apply.getProcessInstanceId());
 			task.setProcessdefid(apply.getTask().getProcessDefinitionId());
 			task.setReason(apply.getReason());
-			task.setStart_time(apply.getStart_time());
+			task.setStart_time(apply.getStartTime());
 			task.setTaskcreatetime(apply.getTask().getCreateTime());
 			task.setTaskid(apply.getTask().getId());
 			task.setTaskname(apply.getTask().getName());
@@ -546,7 +545,7 @@ public class ActivitiController {
 			process.setExecutionid(p.getId());
 			process.setProcessInstanceid(p.getProcessInstanceId());
 			LeaveApply l=leaveservice.getleave(Integer.parseInt(p.getBusinessKey()));
-			if(l.getUser_id().equals(userid))
+			if(l.getUserId().equals(userid))
 			list.add(process);
 			else
 			continue;
