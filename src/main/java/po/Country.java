@@ -14,7 +14,7 @@ public class Country {
     private String country;
     @Column(name = "last_update")
     private String lastUpdate;
-    @OneToMany(fetch = FetchType.EAGER/*, cascade = CascadeType.PERSIST*/)
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
     @JoinTable(
             name = "country_city",
             joinColumns = @JoinColumn(name = "country", referencedColumnName = "id"),

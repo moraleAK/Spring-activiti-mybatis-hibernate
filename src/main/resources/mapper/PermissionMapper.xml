@@ -6,11 +6,11 @@
     <select id="getPermissions" resultType="po.Permission">
     	select * from permission
     </select>
-    <select id="getPermissionByname" resultType="po.Permission">
+    <select id="getPermissionByName" resultType="po.Permission">
     	select * from permission where permissionName=#{permissionName}
     </select>
     <insert id="addpermission">
-    	insert into permission (permissionName) values(#{permissisonname})
+    	insert into permission (permission_name) values(#{permissisonname})
     </insert>
     <delete id="deletepermission">
     	delete from permission where id=#{id}
