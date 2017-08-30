@@ -2,7 +2,7 @@ package service;
 
 import java.util.Map;
 import org.activiti.engine.runtime.ProcessInstance;
-import po.PurchaseApply;
+import entity.PurchaseApply;
 
 public interface PurchaseService {
 	public ProcessInstance startWorkflow(PurchaseApply apply,String userid,Map<String,Object> variables);

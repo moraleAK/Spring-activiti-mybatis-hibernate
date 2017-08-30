@@ -67,7 +67,7 @@ CREATE TABLE `permission` (
 
 LOCK TABLES `permission` WRITE;
 /*!40000 ALTER TABLE `permission` DISABLE KEYS */;
-INSERT INTO `permission` VALUES (2,'人事审批'),(9,'出纳付款'),(8,'总经理审批'),(3,'财务审批'),(1,'部门领导审批'),(15,'采购审批');
+INSERT INTO `permission` VALUES (2,'HRAgree'),(9,'出纳付款'),(8,'总经理审批'),(3,'财务审批'),(1,'leaderAgree'),(15,'采购审批');
 /*!40000 ALTER TABLE `permission` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -118,7 +118,7 @@ CREATE TABLE `role` (
 
 LOCK TABLES `role` WRITE;
 /*!40000 ALTER TABLE `role` DISABLE KEYS */;
-INSERT INTO `role` VALUES (9,'人事'),(10,'出纳员'),(11,'总经理'),(16,'财务管理员'),(1,'部门经理'),(13,'采购经理');
+INSERT INTO `role` VALUES (9,'HR'),(10,'出纳员'),(11,'总经理'),(16,'财务管理员'),(1,'departmentManager'),(13,'采购经理');
 /*!40000 ALTER TABLE `role` ENABLE KEYS */;
 UNLOCK TABLES;
 

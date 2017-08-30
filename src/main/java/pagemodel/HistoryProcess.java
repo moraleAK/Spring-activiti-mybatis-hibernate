@@ -1,8 +1,8 @@
 package pagemodel;
 
 
-import po.LeaveApply;
-import po.PurchaseApply;
+import entity.LeaveApply;
+import entity.PurchaseApply;
 
 public class HistoryProcess {
     String processDefinitionId;

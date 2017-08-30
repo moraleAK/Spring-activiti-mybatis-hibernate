@@ -1,3 +1,4 @@
+/*
 package controller;
 
 import java.util.ArrayList;
@@ -31,10 +32,9 @@ import pagemodel.HistoryProcess;
 import pagemodel.MSG;
 import pagemodel.PurchaseTask;
 import pagemodel.RunningProcess;
-import po.PurchaseApply;
-import po.Role;
-import po.User;
-import po.UserRole;
+import entity.PurchaseApply;
+import entity.Role;
+import entity.User;
 import service.PurchaseService;
 import service.SystemService;
 
@@ -541,3 +541,4 @@ public class PurchaseController {
 		return new MSG("ok");
 	}
 }
+*/

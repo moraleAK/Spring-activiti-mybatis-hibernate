@@ -1,4 +1,4 @@
-package po;
+package entity;
 
 import javax.persistence.*;
 import java.util.ArrayList;

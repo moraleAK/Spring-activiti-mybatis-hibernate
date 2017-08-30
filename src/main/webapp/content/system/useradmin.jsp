@@ -75,7 +75,7 @@
 	    	    		$("#username").val(data.username);
 	    	    		$("#tel").val(data.tel);
 	    	    		$("#age").val(data.age);
-	    	    		var user_role=data.userRoles;
+	    	    		var user_role=data.roles;
 	    	    		var roles=[];
 	    	    		for(var a=0;a<user_role.length;a++){
 	    	    			var role=user_role[a].role.roleName;
@@ -186,6 +186,7 @@
 			    <label for="tel" class="col-sm-1 control-label">电话</label>
 			    <div class="col-sm-11">
 			      <input type="text" name="tel" class="form-control" id="tel">
+			      <input type="text" name="password" value="1234" hidden class="form-control" id="password">
 			    </div>
         	</div>
         	<div class="row form-group">

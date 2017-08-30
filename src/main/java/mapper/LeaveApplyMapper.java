@@ -1,6 +1,6 @@
 package mapper;
 
-import po.LeaveApply;
+import entity.LeaveApply;
 
 public interface LeaveApplyMapper {
 	void save(LeaveApply apply);

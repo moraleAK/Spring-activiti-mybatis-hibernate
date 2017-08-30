@@ -1,6 +1,6 @@
 package mapper;
 
-import po.PurchaseApply;
+import entity.PurchaseApply;
 
 public interface PurchaseApplyMapper {
 	void save(PurchaseApply apply);

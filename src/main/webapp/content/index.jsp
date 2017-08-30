@@ -123,10 +123,10 @@
 								<span class="hidden-xs">请假待办</span>
 							</a>
 							<ul class="dropdown-menu">
-								<li><a class="ajax-link" href="deptleaderaudit">部门领导审批</a></li>
-								<li><a class="ajax-link" href="hraudit">人事审批</a></li>
-								<li><a class="ajax-link" href="reportback">销假</a></li>
-								<li><a class="ajax-link" href="modifyapply">调整申请</a></li>
+								<li><a class="ajax-link" href="deptleaderaudit">leaderAgree</a></li>
+								<li><a class="ajax-link" href="hraudit">HRAgree</a></li>
+								<li><a class="ajax-link" href="reportback">cancelLeave</a></li>
+								<li><a class="ajax-link" href="modifyapply">adjugeApply</a></li>
 							</ul>
 						</li>
 						<li class="dropdown">
@@ -139,7 +139,7 @@
 								<li><a class="ajax-link" href="finance">财务审批</a></li>
 								<li><a class="ajax-link" href="manager">总经理审批</a></li>
 								<li><a class="ajax-link" href="pay">出纳付款</a></li>
-								<li><a class="ajax-link" href="updateapply">调整申请</a></li>
+								<li><a class="ajax-link" href="updateapply">adjugeApply</a></li>
 								<li><a class="ajax-link" href="receiveitem">收货确认</a></li>
 							</ul>
 						</li>

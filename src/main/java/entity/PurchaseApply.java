@@ -1,4 +1,4 @@
-package po;
+package entity;
 
 import java.util.Date;
 

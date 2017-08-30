@@ -3,14 +3,14 @@
  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mapper.LeaveApplyMapper">
-	<select id="get" resultType="po.LeaveApply" parameterType="int">
+	<select id="get" resultType="entity.LeaveApply" parameterType="int">
 		select * from leave_apply where id=#{id}
 	</select>
-	<insert id="save" useGeneratedKeys="true" keyProperty="id" parameterType="po.LeaveApply">
+	<insert id="save" useGeneratedKeys="true" keyProperty="id" parameterType="entity.LeaveApply">
 	  insert into leave_apply (id,process_instance_id,userId,start_time,endt_time,leave_type,reason,apply_time,reality_start_time,reality_end_time)
 	  values (#{id},#{processInstanceId},#{userId},#{startTime},#{endTime},#{leaveType},#{reason},#{applyTime},#{realityStartTime},#{realityEndTime})
 	</insert>
-	<update id="update" parameterType="po.LeaveApply">
+	<update id="update" parameterType="entity.LeaveApply">
 		update leave_apply set process_instance_id =#{processInstanceId},reality_start_time=#{realityStartTime},reality_end_time=#{realityEndTime},
 		start_time=#{startTime},end_time=#{endTime},leave_type=#{leaveType},reason=#{reason}
 		where id=#{id}

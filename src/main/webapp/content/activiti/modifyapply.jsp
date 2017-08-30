@@ -9,7 +9,7 @@
 			<li><a href="index">首页</a></li>
 			<li><a href="#">我的待办任务</a></li>
 			<li><a href="#">请假待办</a></li>
-			<li><a href="#">调整申请</a></li>
+			<li><a href="#">adjugeApply</a></li>
 		</ol>
 	</div>
 </div>       
@@ -19,7 +19,7 @@
                         <div class="box ui-draggable ui-droppable">
 				<div class="box-header">
 					<div class="box-name">
-						<i class="fa fa-coffee"></i> <span>调整申请</span>
+						<i class="fa fa-coffee"></i> <span>adjugeApply</span>
 					</div>
 					<div class="box-icons">
 						<a class="collapse-link"> <i class="fa fa-chevron-up"></i>
@@ -55,7 +55,7 @@
 			<div class="box ui-draggable ui-droppable" id="dept">
 				<div class="box-header">
 					<div class="box-name">
-						<i class="fa fa-search"></i> <span>调整申请</span>
+						<i class="fa fa-search"></i> <span>adjugeApply</span>
 					</div>
 					<div class="box-icons">
 						<a class="collapse-link"> <i class="fa fa-chevron-up"></i>
@@ -101,7 +101,7 @@
 						                <label>是否继续申请</label>
 						                <div class="controls">
 											<select name="reapply">
-												<option value="true">重新申请</option>
+												<option value="true">applyAgain</option>
 												<option value="false">不再申请</option>
 											</select>
 										</div>

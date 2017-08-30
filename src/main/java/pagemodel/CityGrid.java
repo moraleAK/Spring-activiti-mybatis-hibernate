@@ -1,7 +1,7 @@
 package pagemodel;
 
 import java.util.List;
-import po.City;
+import entity.City;
 
 public class CityGrid {
 	private int current;//当前页面号

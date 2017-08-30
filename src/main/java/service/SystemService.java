@@ -2,12 +2,12 @@ package service;
 
 import java.util.List;
 
-import po.Permission;
-import po.Role;
-import po.User;
+import entity.Permission;
+import entity.Role;
+import entity.User;
 
 public interface SystemService {
-    List<User> getallusers();
+    List<User> getUsers();
 
     List<User> getpageusers(int pagenum, int pagesize);
 
@@ -29,7 +29,7 @@ public interface SystemService {
 
     List<Permission> getPermisions();
 
-    void addrole(Role role, String[] permissionnames);
+    void addRole(Role role, String[] permissionnames);
 
     void deleterole(long rid);
 

@@ -2,7 +2,7 @@ package mapper;
 
 import java.util.List;
 
-import po.Permission;
+import entity.Permission;
 
 public interface PermissionMapper {
 	List<Permission> getPermissions();

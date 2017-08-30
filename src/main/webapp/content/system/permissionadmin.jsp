@@ -33,7 +33,7 @@
 					 <table id="grid-data" class="table table-condensed table-hover table-striped">
 							        <thead>
 							            <tr>
-							                <th data-column-id="pid" data-identifier="true" data-type="numeric">权限id</th>
+							                <th data-column-id="id" data-identifier="true" data-type="numeric">权限id</th>
 							                <th data-column-id="permissionName">权限名</th>
 							                <th data-formatter="commands">操作</th>
 							            </tr>

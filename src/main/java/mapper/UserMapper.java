@@ -2,7 +2,7 @@ package mapper;
 
 import java.util.List;
 
-import po.User;
+import entity.User;
 
 public interface UserMapper {
 	List<User> getusers();

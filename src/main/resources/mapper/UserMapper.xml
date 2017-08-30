@@ -4,20 +4,20 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mapper.UserMapper">
 <!-- 多对多关系映射，使用1对多和多对1嵌套实现，注意映射关系的三张表的主键名称要不相同（uid,rid,urid），否则只能查到1条记录 -->
-	<resultMap type="po.User" id="userMap">
+	<!--<resultMap type="entity.User" id="userMap">
         <id column="id" property="id" ></id>
         <result column="username" property="username"/>
         <result column="password" property="password"/>
         <result column="tel" property="tel" />
         <result column="age" property="age" />
-        <collection property="userRoles" column="user_role_id" ofType="po.UserRole">
+        <collection property="roles" column="user_role_id" ofType="entity.UserRole">
             <id property="user_role_id" column="id" />
-            <association column="role_id" property="role" javaType="po.Role">
+            <association column="role_id" property="role" javaType="entity.Role">
 	        	<id column="role_id" property="id"></id>
 	        	<result column="roleName" property="roleName"/>
         	</association>  
         </collection>
-    </resultMap>
+    </resultMap>-->
     <select id="getusers" resultMap="userMap">
     	select * from user left join user_role on user.uid=user_role.userid left join role on user_role.roleid=role.rid
     </select>
@@ -35,12 +35,12 @@
     	delete from user_role where user_role.userid=#{uid}
     </delete>
     
-    <insert id="adduser" useGeneratedKeys="true" keyProperty="id" parameterType="po.User">
+    <insert id="adduser" useGeneratedKeys="true" keyProperty="id" parameterType="entity.User">
     	 insert into user (username,password,tel,age)
 	  	 values (#{username},'1234',#{tel},#{age})
     </insert>
     
-    <update id="updateuser" parameterType="po.User">
+    <update id="updateuser" parameterType="entity.User">
     	update user set
     		tel=#{tel},age=#{age}
     	where user.uid=#{uid}

@@ -1,149 +1,122 @@
 package service.impl;
 
-import java.util.List;
-
-import mapper.PermissionMapper;
-import mapper.RoleMapper;
-import mapper.UserMapper;
-
+import com.github.pagehelper.PageHelper;
+import dao.PermissionDao;
+import dao.RoleDao;
+import dao.UserDao;
+import entity.Permission;
+import entity.Role;
+import entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
-
-import po.Permission;
-import po.Role;
-import po.RolePermission;
-import po.User;
-import po.UserRole;
 import service.SystemService;
 
-import com.github.pagehelper.PageHelper;
+import java.util.List;
+
 @Service
-@Transactional(propagation=Propagation.REQUIRED,isolation=Isolation.DEFAULT,timeout=5)
-public class SystemServiceImpl implements SystemService{
-	@Autowired
-	UserMapper usermapper;
-	@Autowired
-	RoleMapper rolemapper;
-	@Autowired
-	PermissionMapper permissionmapper;
+@Transactional(propagation = Propagation.REQUIRED, isolation = Isolation.DEFAULT, timeout = 5)
+public class SystemServiceImpl implements SystemService {
+    @Autowired
+    UserDao userDao;
+    @Autowired
+    PermissionDao permissionDao;
+    @Autowired
+    RoleDao roleDao;
 
 
-	public List<User> getallusers() {
-		return usermapper.getusers();
-	}
+    public List<User> getUsers() {
+        return userDao.loadUses();
+    }
 
-	public List<User> getpageusers(int pagenum, int pagesize) {
-		PageHelper.startPage(pagenum,pagesize);  
-		List<User> l=usermapper.getusers();
-		return l;
-	}
-	public User getUserByid(long id) {
-		User u=usermapper.getUserByid(id);
-		return u;
-	}
-	public List<Role> getRoles() {
-		return rolemapper.getRoles();
-	}
+    public List<User> getpageusers(int pagenum, int pagesize) {
+        PageHelper.startPage(pagenum, pagesize);
+        return userDao.loadUses();
+    }
 
-	public void deleteuser(long uid) {
-		usermapper.deleteuser(uid);
-		usermapper.deleteuserrole(uid);
-	}
-	public void adduser(User user, String[] rolenames) {
-		usermapper.adduser(user);
-		for(String rolename:rolenames){
-			Role role=rolemapper.getRoleidbyName(rolename);
-			UserRole ur=new UserRole();
-			ur.setRole(role);
-			ur.setUser(user);
-			rolemapper.adduserrole(ur);
-		}
-	}
-	public void adduser(User user) {
-		usermapper.adduser(user);
-	}
+    public User getUserByid(long id) {
+        return userDao.load(id);
+    }
 
-	public void updateuser(long uid,User user, String[] rolenames) {
-		if(rolenames==null){
-			user.setId(uid);
-			usermapper.updateuser(user);
-			usermapper.deleteuserrole(uid);
-		}
-		else{
-			user.setId(uid);
-			usermapper.updateuser(user);
-			usermapper.deleteuserrole(uid);
-			for(String rolename:rolenames){
-				Role role=rolemapper.getRoleidbyName(rolename);
-				UserRole ur=new UserRole();
-				ur.setRole(role);
-				ur.setUser(user);
-				rolemapper.adduserrole(ur);
-			}
-		}
-		
-	}
-	public List<Role> getpageRoleinfo(int pagenum, int pagesize) {
-		PageHelper.startPage(pagenum,pagesize);  
-		List<Role> l=rolemapper.getRoleinfo();
-		return l;
-	}
-	public List<Role> getRoleinfo() {
-		return rolemapper.getRoleinfo();
-	}
-	public List<Permission> getPermisions() {
-		return permissionmapper.getPermissions();
-	}
-	public void addrole(Role role, String[] permissionnames) {
-		rolemapper.addRole(role);
-		for(String permissionname:permissionnames){
-			Permission p=permissionmapper.getPermissionByname(permissionname);
-			RolePermission rp=new RolePermission();
-			rp.setRole(role);
-			rp.setPermission(p);
-			rolemapper.addRolePermission(rp);
-		}
-	}
-	public void deleterole(long rid) {
-		rolemapper.deleterole(rid);
-		rolemapper.deleterole_permission(rid);
-		rolemapper.deleteuser_role(rid);
-	}
-	public Role getRolebyid(long rid) {
-		return rolemapper.getRolebyid(rid);
-	}
-	public void deleterolepermission(long rid) {
-		rolemapper.deleterole_permission(rid);
-	}
-	public void updaterole(long rid, String[] permissionnames) {
-		Role role=rolemapper.getRolebyid(rid);
-		for(String permissionname:permissionnames){
-			Permission p=permissionmapper.getPermissionByname(permissionname);
-			RolePermission rp=new RolePermission();
-			rp.setRole(role);
-			rp.setPermission(p);
-			rolemapper.addRolePermission(rp);
-		}
-	}
-	public List<Permission> getPagePermisions(int pagenum, int pagesize) {
-		PageHelper.startPage(pagenum,pagesize);  
-		return permissionmapper.getPermissions();
-	}
-	public void addPermission(String permissionname) {
-		permissionmapper.addpermission(permissionname);
-	}
+    public List<Role> getRoles() {
+        return roleDao.loadRoles();
+    }
 
-	public void deletepermission(long pid) {
-		permissionmapper.deletepermission(pid);
-		permissionmapper.deleteRole_permission(pid);
-	}
-	public long getUidByusername(String username) {
-		return usermapper.getUidByusername(username);
-	}
-	
-	
+    public void deleteuser(long uid) {
+        userDao.removeUser(uid);
+    }
 
+    public void adduser(User user, String[] rolenames) {
+        userDao.persist(user);
+        user.setRoles(roleDao.loadRolesByRoleNames(rolenames));
+    }
+
+    public void adduser(User user) {
+        userDao.persist(user);
+    }
+
+    public void updateuser(long uid, User user, String[] rolenames) {
+        User user1 = userDao.load(uid);
+        user1.setAge(user.getAge());
+        user1.setUsername(user.getUsername());
+        if (rolenames != null) {
+            user1.setRoles(roleDao.loadRolesByRoleNames(rolenames));
+        }
+    }
+
+    public List<Role> getpageRoleinfo(int pagenum, int pagesize) {
+        PageHelper.startPage(pagenum, pagesize);
+        return roleDao.loadRoles();
+    }
+
+    public List<Role> getRoleinfo() {
+        return roleDao.loadRoles();
+    }
+
+    public List<Permission> getPermisions() {
+        return permissionDao.loadPermissions();
+    }
+
+    public void addRole(Role role, String[] permissionNames) {
+        roleDao.persist(role);
+        role.setPermissions(permissionDao.loadPermissionsByNames(permissionNames));
+    }
+
+    public void deleterole(long rid) {
+        roleDao.removeRole(rid);
+    }
+
+    public Role getRolebyid(long rid) {
+        return roleDao.load(rid);
+    }
+
+    public void deleterolepermission(long rid) {
+        //rolemapper.deleterole_permission(rid);
+    }
+
+    public void updaterole(long rid, String[] permissionnames) {
+        Role role = roleDao.load(rid);
+        role.setPermissions(permissionDao.loadPermissionsByNames(permissionnames));
+    }
+
+    public List<Permission> getPagePermisions(int pagenum, int pagesize) {
+        PageHelper.startPage(pagenum, pagesize);
+        return permissionDao.loadPermissions();
+    }
+
+    public void addPermission(String permissionname) {
+        Permission p = new Permission();
+        p.setPermissionName(permissionname);
+        permissionDao.persist(p);
+    }
+
+    public void deletepermission(long pid) {
+        permissionDao.removePermission(pid);
+    }
+
+    public long getUidByusername(String username) {
+        return userDao.loadUserByName(username).getId();
+    }
 }
