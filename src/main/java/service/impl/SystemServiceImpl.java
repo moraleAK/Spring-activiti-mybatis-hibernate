@@ -62,7 +62,10 @@ public class SystemServiceImpl implements SystemService {
         user1.setAge(user.getAge());
         user1.setUsername(user.getUsername());
         if (rolenames != null) {
-            user1.setRoles(roleDao.loadRolesByRoleNames(rolenames));
+            List<Role> roles = roleDao.loadRolesByRoleNames(rolenames);
+            for (Role r : roles) {
+                user1.getRoles().add(r);
+            }
         }
     }
 

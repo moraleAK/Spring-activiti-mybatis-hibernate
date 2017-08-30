@@ -24,6 +24,6 @@ public class UserDao extends GenericDaoImpl<User, Long> {
     }
 
     public void removeUser(long id) {
-        query("delete from User where id = ?", id).executeUpdate();
+        getEntityManager().remove(load(id));
     }
 }

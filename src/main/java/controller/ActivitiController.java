@@ -214,12 +214,12 @@ public class ActivitiController {
             List<LeaveTask> tasks = new ArrayList<LeaveTask>();
             for (LeaveApply apply : results) {
                 LeaveTask task = new LeaveTask();
-                task.setApply_time(apply.getApplyTime());
+                task.setApplyTime(apply.getApplyTime());
                 task.setUser_id(apply.getUserId());
                 task.setEnd_time(apply.getEndTime());
                 task.setId(apply.getId());
-                task.setLeave_type(apply.getLeaveType());
-                task.setProcess_instance_id(apply.getProcessInstanceId());
+                task.setLeaveType(apply.getLeaveType());
+                task.setProcessInstanceId(apply.getProcessInstanceId());
                 task.setProcessdefid(apply.getTask().getProcessDefinitionId());
                 task.setReason(apply.getReason());
                 task.setStart_time(apply.getStartTime());
@@ -274,12 +274,12 @@ public class ActivitiController {
             List<LeaveTask> tasks = new ArrayList<LeaveTask>();
             for (LeaveApply apply : results) {
                 LeaveTask task = new LeaveTask();
-                task.setApply_time(apply.getApplyTime());
+                task.setApplyTime(apply.getApplyTime());
                 task.setUser_id(apply.getUserId());
                 task.setEnd_time(apply.getEndTime());
                 task.setId(apply.getId());
-                task.setLeave_type(apply.getLeaveType());
-                task.setProcess_instance_id(apply.getProcessInstanceId());
+                task.setLeaveType(apply.getLeaveType());
+                task.setProcessInstanceId(apply.getProcessInstanceId());
                 task.setProcessdefid(apply.getTask().getProcessDefinitionId());
                 task.setReason(apply.getReason());
                 task.setStart_time(apply.getStartTime());
@@ -306,12 +306,12 @@ public class ActivitiController {
         List<LeaveTask> tasks = new ArrayList<LeaveTask>();
         for (LeaveApply apply : results) {
             LeaveTask task = new LeaveTask();
-            task.setApply_time(apply.getApplyTime());
+            task.setApplyTime(apply.getApplyTime());
             task.setUser_id(apply.getUserId());
             task.setEnd_time(apply.getEndTime());
             task.setId(apply.getId());
-            task.setLeave_type(apply.getLeaveType());
-            task.setProcess_instance_id(apply.getProcessInstanceId());
+            task.setLeaveType(apply.getLeaveType());
+            task.setProcessInstanceId(apply.getProcessInstanceId());
             task.setProcessdefid(apply.getTask().getProcessDefinitionId());
             task.setReason(apply.getReason());
             task.setStart_time(apply.getStartTime());
@@ -339,12 +339,12 @@ public class ActivitiController {
         List<LeaveTask> tasks = new ArrayList<LeaveTask>();
         for (LeaveApply apply : results) {
             LeaveTask task = new LeaveTask();
-            task.setApply_time(apply.getApplyTime());
+            task.setApplyTime(apply.getApplyTime());
             task.setUser_id(apply.getUserId());
             task.setEnd_time(apply.getEndTime());
             task.setId(apply.getId());
-            task.setLeave_type(apply.getLeaveType());
-            task.setProcess_instance_id(apply.getProcessInstanceId());
+            task.setLeaveType(apply.getLeaveType());
+            task.setProcessInstanceId(apply.getProcessInstanceId());
             task.setProcessdefid(apply.getTask().getProcessDefinitionId());
             task.setReason(apply.getReason());
             task.setStart_time(apply.getStartTime());
