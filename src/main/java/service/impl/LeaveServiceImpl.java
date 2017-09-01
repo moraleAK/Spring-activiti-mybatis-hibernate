@@ -57,6 +57,7 @@ public class LeaveServiceImpl implements LeaveService {
     public List<LeaveApply> getpagedepttask(String userid, int firstrow, int rowcount) {
         List<LeaveApply> results = new ArrayList<LeaveApply>();
         List<Task> tasks = taskservice.createTaskQuery().taskCandidateGroup("departmentManager").listPage(firstrow, rowcount);
+        tasks = taskservice.createTaskQuery().taskAssignee("admin").list();
         for (Task task : tasks) {
             String instanceid = task.getProcessInstanceId();
             ProcessInstance ins = runtimeservice.createProcessInstanceQuery().processInstanceId(instanceid).singleResult();

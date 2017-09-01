@@ -6,14 +6,14 @@
       <yaoqiang:pageFormat height="841.8897637795276" imageableHeight="831.8897637795276" imageableWidth="588.1102362204724" imageableX="5.0" imageableY="5.0" orientation="0" width="598.1102362204724"/>
       <yaoqiang:page background="#FFFFFF" horizontalCount="1" verticalCount="1"/>
     </extensionElements>
-    <userTask activiti:candidateGroups="departmentManager" activiti:exclusive="true" completionQuantity="1" id="deptleaderaudit" implementation="##unspecified" isForCompensation="false" name="leaderAgree" startQuantity="1"/>
+    <userTask activiti:assignee="${leader}" activiti:candidateGroups="departmentManager" activiti:exclusive="true" completionQuantity="1" id="deptleaderaudit" implementation="##unspecified" isForCompensation="false" name="leaderAgree" startQuantity="1"/>
     <exclusiveGateway gatewayDirection="Unspecified" id="exclusivegateway1" name="Exclusive Gateway"/>
-    <userTask activiti:candidateGroups="HR" activiti:exclusive="true" completionQuantity="1" id="hraudit" implementation="##unspecified" isForCompensation="false" name="HRAgree" startQuantity="1"/>
-    <sequenceFlow id="flow3" name="同意" sourceRef="exclusivegateway1" targetRef="hraudit">
+    <userTask activiti:assignee="${assignHr}" activiti:candidateGroups="HR" activiti:exclusive="true" completionQuantity="1" id="hraudit" implementation="##unspecified" isForCompensation="false" name="HRAgree" startQuantity="1"/>
+    <sequenceFlow id="flow3" name="agree" sourceRef="exclusivegateway1" targetRef="hraudit">
       <conditionExpression xsi:type="tFormalExpression"><![CDATA[${deptleaderapprove=='true'}]]></conditionExpression>
     </sequenceFlow>
     <userTask activiti:assignee="${applyuserid}" activiti:exclusive="true" completionQuantity="1" id="modifyapply" implementation="##unspecified" isForCompensation="false" name="adjugeApply" startQuantity="1"/>
-    <sequenceFlow id="flow4" name="拒绝" sourceRef="exclusivegateway1" targetRef="modifyapply">
+    <sequenceFlow id="flow4" name="refuse" sourceRef="exclusivegateway1" targetRef="modifyapply">
       <conditionExpression xsi:type="tFormalExpression"><![CDATA[${deptleaderapprove=='false'}]]></conditionExpression>
     </sequenceFlow>
     <sequenceFlow id="flow6" sourceRef="deptleaderaudit" targetRef="exclusivegateway1"/>
@@ -23,16 +23,16 @@
       <conditionExpression xsi:type="tFormalExpression"><![CDATA[${reapply=='true'}]]></conditionExpression>
     </sequenceFlow>
     <endEvent id="endevent1" name="End"/>
-    <sequenceFlow id="flow9" name="结束流程" sourceRef="exclusivegateway2" targetRef="endevent1">
+    <sequenceFlow id="flow9" name="endProcess" sourceRef="exclusivegateway2" targetRef="endevent1">
       <conditionExpression xsi:type="tFormalExpression"><![CDATA[${reapply=='false'}]]></conditionExpression>
     </sequenceFlow>
     <exclusiveGateway gatewayDirection="Unspecified" id="exclusivegateway3" name="Exclusive Gateway"/>
     <sequenceFlow id="flow10" sourceRef="hraudit" targetRef="exclusivegateway3"/>
-    <sequenceFlow id="flow11" name="拒绝" sourceRef="exclusivegateway3" targetRef="modifyapply">
+    <sequenceFlow id="flow11" name="refuse" sourceRef="exclusivegateway3" targetRef="modifyapply">
       <conditionExpression xsi:type="tFormalExpression"><![CDATA[${hrapprove=='false'}]]></conditionExpression>
     </sequenceFlow>
     <userTask activiti:assignee="${applyuserid}" activiti:exclusive="true" completionQuantity="1" id="reportback" implementation="##unspecified" isForCompensation="false" name="cancelLeave" startQuantity="1"/>
-    <sequenceFlow id="flow12" name="同意" sourceRef="exclusivegateway3" targetRef="reportback">
+    <sequenceFlow id="flow12" name="agree" sourceRef="exclusivegateway3" targetRef="reportback">
       <conditionExpression xsi:type="tFormalExpression"><![CDATA[${hrapprove=='true'}]]></conditionExpression>
     </sequenceFlow>
     <sequenceFlow id="flow13" sourceRef="reportback" targetRef="endevent1"/>

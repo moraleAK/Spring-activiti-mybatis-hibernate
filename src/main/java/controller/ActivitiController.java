@@ -171,6 +171,7 @@ public class ActivitiController {
         String userid = (String) session.getAttribute("username");
         Map<String, Object> variables = new HashMap<String, Object>();
         variables.put("applyuserid", userid);
+        variables.put("leader","admin");
         ProcessInstance ins = leaveservice.startWorkflow(apply, userid, variables);
         System.out.println("流程id" + ins.getId() + "已启动");
         return JSON.toJSONString("sucess");
