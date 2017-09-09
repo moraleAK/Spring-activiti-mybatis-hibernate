@@ -1,8 +1,8 @@
 package mapper;
 
-import java.util.List;
-
 import entity.Role;
+
+import java.util.List;
 
 
 public interface RoleMapper {

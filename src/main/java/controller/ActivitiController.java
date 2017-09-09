@@ -1,23 +1,12 @@
 package controller;
 
-import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import javax.servlet.ServletOutputStream;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
+import com.alibaba.fastjson.JSON;
+import entity.LeaveApply;
+import entity.Permission;
+import entity.Role;
+import entity.User;
 import org.activiti.bpmn.model.BpmnModel;
-import org.activiti.engine.FormService;
-import org.activiti.engine.HistoryService;
-import org.activiti.engine.IdentityService;
-import org.activiti.engine.RepositoryService;
-import org.activiti.engine.RuntimeService;
-import org.activiti.engine.TaskService;
+import org.activiti.engine.*;
 import org.activiti.engine.history.HistoricActivityInstance;
 import org.activiti.engine.history.HistoricProcessInstance;
 import org.activiti.engine.history.HistoricProcessInstanceQuery;
@@ -31,27 +20,22 @@ import org.activiti.image.impl.DefaultProcessDiagramGenerator;
 import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-
-import pagemodel.DataGrid;
-import pagemodel.HistoryProcess;
-import pagemodel.LeaveTask;
+import pagemodel.*;
 import pagemodel.Process;
-import pagemodel.RunningProcess;
-import entity.LeaveApply;
-import entity.Permission;
-import entity.Role;
-import entity.User;
 import service.LeaveService;
 import service.SystemService;
 
-import com.alibaba.fastjson.JSON;
+import javax.servlet.ServletOutputStream;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @Controller
 public class ActivitiController {
@@ -383,6 +367,7 @@ public class ActivitiController {
         Map<String, Object> variables = new HashMap<String, Object>();
         String approve = req.getParameter("deptleaderapprove");
         variables.put("deptleaderapprove", approve);
+        variables.put("assignHr","akgcc");
         taskservice.claim(taskid, userid);
         taskservice.complete(taskid, variables);
         return JSON.toJSONString("success");

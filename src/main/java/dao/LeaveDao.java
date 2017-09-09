@@ -1,8 +1,8 @@
 package dao;
 
 import database.dao.GenericDaoImpl;
-import org.springframework.stereotype.Repository;
 import entity.LeaveApply;
+import org.springframework.stereotype.Repository;
 
 /**
  * Created by Ak_Guili on 2017/8/23.

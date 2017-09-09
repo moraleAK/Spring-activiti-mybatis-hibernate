@@ -1,10 +1,9 @@
 package entity;
 
-import java.io.Serializable;
-
 import org.activiti.engine.task.Task;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "leave_apply")

@@ -1,10 +1,10 @@
 package service;
 
-import java.util.List;
-
 import entity.Permission;
 import entity.Role;
 import entity.User;
+
+import java.util.List;
 
 public interface SystemService {
     List<User> getUsers();

@@ -1,10 +1,9 @@
 package entity;
 
-import java.util.Date;
-
 import org.activiti.engine.task.Task;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Table(name = "purchase_apply")

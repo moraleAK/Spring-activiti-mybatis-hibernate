@@ -1,8 +1,8 @@
 package dao;
 
 import database.dao.GenericDaoImpl;
-import org.springframework.stereotype.Repository;
 import entity.User;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 

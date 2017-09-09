@@ -2,10 +2,10 @@ package service.impl;
 
 
 import dao.UserDao;
+import entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import entity.User;
 import service.LoginService;
 @Transactional
 @Service

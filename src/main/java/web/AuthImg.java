@@ -1,13 +1,16 @@
 package web;
 
-import javax.servlet.*;
-import javax.servlet.http.*;
-import javax.servlet.annotation.*;
-import java.io.*;
+import javax.imageio.ImageIO;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.awt.*;
-import java.awt.image.*;
-import java.util.*;
-import javax.imageio.*;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.util.Random;
 
 @WebServlet(urlPatterns = {"/content/authImg.jsp"})
 public class AuthImg extends HttpServlet {

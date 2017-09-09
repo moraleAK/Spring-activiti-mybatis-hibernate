@@ -1,12 +1,12 @@
 package com.el.test;
 
 import dao.UserDao;
+import entity.User;
 import org.activiti.engine.*;
 import org.activiti.engine.history.HistoricDetail;
 import org.activiti.engine.history.HistoricProcessInstanceQuery;
 import org.activiti.engine.repository.Deployment;
 import org.activiti.engine.task.Task;
-import org.junit.*;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +15,6 @@ import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
-import entity.User;
 
 import java.util.HashMap;
 import java.util.List;
@@ -90,8 +89,6 @@ public class ActivitiTest {
         List<HistoricDetail> historyDetails = historyService.createHistoricDetailQuery().list();
         List list = historyService.createHistoricProcessInstanceQuery().processDefinitionKey("leave").list();
         HistoricProcessInstanceQuery process = (HistoricProcessInstanceQuery)list.get(0);
-
-
         System.out.println("##################### history size = " + historyDetails.size() );
         System.out.println("##################### history size = " + list.size() );
     }
